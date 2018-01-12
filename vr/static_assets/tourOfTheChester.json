@@ -1,0 +1,81 @@
+{
+   "nav_icon": "logo.png",
+   "firstPhotoId":"112379",
+   "firstPhotoRotation":150,
+   "soundEffects": {
+      "navButton": {
+         "onEnter": {
+            "uri": "switch-flip.wav",
+            "attributionUri": "https://www.freesound.org/people/ianstargem/sounds/278205/"
+         },
+         "onClick": {
+            "uri": "menu-click.wav",
+            "attributionUri": "https://www.freesound.org/people/fins/sounds/146721/"
+         }
+      },
+      "infoButton": {
+         "onEnter": {
+            "uri": "switch-flip.wav",
+            "attributionUri": "https://www.freesound.org/people/ianstargem/sounds/278205/"
+         }
+      },
+      "ambient": {
+         "uri": "cafe.wav",
+         "attributionUri": "https://www.freesound.org/people/PapercutterJohn/sounds/322031/",
+         "loop": true,
+         "volume": 0.50
+      }
+   },
+   "photos":{
+      "112362":{
+         "rotationOffset": 0,
+         "uri":"office.jpg",
+         "tooltips":[
+            {
+               "text":"The construction",
+               "rotationY": -9.929,
+               "linkedPhotoId":"112379"
+            },
+            {
+               "type": "image",
+               "rotationY": 115,
+               "width": 1.020,
+               "height": 1.388,
+               "source":"workers.jpg",
+               "attribution": "Photo by currystrumpet on flickr",
+               "attributionUri": "https://www.flickr.com/photos/currystrumpet/7895715748"
+            }
+         ]
+      },
+      "112379":{
+         "rotationOffset": -120,
+         "uri":"example.jpg",
+         "tooltips":[
+            {
+               "text":"The ofice",
+               "rotationY": -64.525,
+               "linkedPhotoId":"112362"
+            },
+            {
+               "type": "panelimage",
+               "rotationY": 140,
+               "width": 1.280,
+               "height": 1.280,
+               "source": "construction1.jpg",
+               "text": "TIME-LAPSE & PROJECT MANAGEMENT CAMERAS",
+               "attribution": "Photo by Will Shenton",
+               "attributionUri": "https://commons.wikimedia.org/wiki/File:The_Young_Laddie_Cocktail.jpg"
+            },
+            {
+               "type": "textblock",
+               "title": "Evercam",
+               "text": "Marco & Vinnie founded Evercam in 2010 to film construction projects in Berlin and have developed their own specialist software platform for the construction industry worldwide. We partnered with Lensmen, led by Susan Kennedy, a leading player in the Irish Photography & videography market and the owners of the Irish Photographic Archive. We also partner with various installations companies, for most of our Irish work we use Camba.tv. We may be able to work with your existing M+E partner. We are open to working with other partners, especially in areas where we do not yet have an installations partner. If you are a photographer with a potential construction industry client, please make contact and we can see how the Evercam solution can work for you.",
+               "attribution": "360 Photos courtesy of Oyster.com, text from TheChester.com",
+               "rotationY": 0,
+               "width": 1.5,
+               "height": 1.5
+            }
+         ]
+      }
+   }
+}
