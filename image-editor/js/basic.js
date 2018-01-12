@@ -144,7 +144,7 @@ function getBrushSettings() {
 
     return {
         width: brushWidth,
-        color: hexToRGBa(brushColor, 0.5)
+        color: hexToRGBa(brushColor, 0.9)
     };
 }
 
