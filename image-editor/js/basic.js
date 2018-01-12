@@ -532,7 +532,7 @@ instanceArrow.on('selectColor', function(event) {
 });
 
 // Load sample image
-imageEditor.loadImageFromURL('img/sampleImage.jpg', 'SampleImage').then(sizeValue => {
+imageEditor.loadImageFromURL('img/sampleimage.jpg', 'SampleImage').then(sizeValue => {
     console.log(sizeValue);
     imageEditor.clearUndoStack();
 });
