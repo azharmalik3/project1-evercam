@@ -66,8 +66,8 @@ var $selectBlendType = $('[name="select-blend-type"]');
 
 // Image editor
 var imageEditor = new tui.ImageEditor('.tui-image-editor', {
-    cssMaxWidth: 700,
-    cssMaxHeight: 500,
+    cssMaxWidth: 800,
+    cssMaxHeight: 600,
     selectionStyle: {
         cornerSize: 20,
         rotatingPointOffset: 70
