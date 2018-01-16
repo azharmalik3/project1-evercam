@@ -68,11 +68,11 @@
     display: none;
 }
 .tui-image-editor {
-    height: 500px;
+    height: 200px;
 }
 .tui-image-editor-canvas-container {
     margin: 0 auto;
-    top: 30%;
+    top: 40%;
     transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
