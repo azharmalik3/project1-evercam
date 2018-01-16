@@ -2576,7 +2576,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var layout = ['<ul class="{{cssPrefix}}clearfix">{{colorList}}</ul>', '<div class="{{cssPrefix}}clearfix" style="overflow:hidden">', '<input type="button" class="{{cssPrefix}}palette-toggle-slider" value="{{detailTxt}}" />', '<input type="text" class="{{cssPrefix}}palette-hex" value="{{color}}" maxlength="7" />', '<span class="{{cssPrefix}}palette-preview" style="background-color:{{color}};color:{{color}}">{{color}}</span>', '</div>'].join('\n');
+	var layout = ['<ul class="{{cssPrefix}}clearfix">{{colorList}}</ul>', '<div class="{{cssPrefix}}clearfix" style="overflow:hidden">', '<input type="button" class="{{cssPrefix}}palette-toggle-slider" value="{{detailTxt}}" />', '</div>'].join('\n');
 
 	var item = '<li><input class="{{cssPrefix}}palette-button{{selected}}" type="button" style="background-color:{{color}};color:{{color}}" title="{{color}}" value="{{color}}" /></li>';
 
@@ -3127,6 +3127,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var SVGHuebar = ['<svg class="{{cssPrefix}}svg {{cssPrefix}}svg-huebar">', '<defs>', '<linearGradient id="g" x1="0%" y1="0%" x2="0%" y2="100%">', '<stop offset="0%" stop-color="rgb(255,0,0)" />', '<stop offset="16.666%" stop-color="rgb(255,255,0)" />', '<stop offset="33.333%" stop-color="rgb(0,255,0)" />', '<stop offset="50%" stop-color="rgb(0,255,255)" />', '<stop offset="66.666%" stop-color="rgb(0,0,255)" />', '<stop offset="83.333%" stop-color="rgb(255,0,255)" />', '<stop offset="100%" stop-color="rgb(255,0,0)" />', '</linearGradient>', '</defs>', '<rect width="18px" height="100%" fill="url(#g)"></rect>', '<path transform="translate(-6,-3)" class="{{cssPrefix}}huebar-handle" d="M0 0 L4 4 L0 8 L0 0 Z" fill="black" stroke="none" />', '</svg>'].join('\n');
 
 	var VMLHuebar = ['<div class="{{cssPrefix}}vml-huebar">', '<v:rect strokecolor="#ccc" class="{{cssPrefix}}vml {{cssPrefix}}vml-huebar-bg">', '<v:fill type="gradient" method="none" colors="' + '0% rgb(255,0,0), 16.666% rgb(255,255,0), 33.333% rgb(0,255,0), 50% rgb(0,255,255), 66.666% rgb(0,0,255), 83.333% rgb(255,0,255), 100% rgb(255,0,0)' + '" angle="180" class="{{cssPrefix}}vml" />', '</v:rect>', '<v:shape class="{{cssPrefix}}vml {{cssPrefix}}huebar-handle" coordsize="1 1" style="width:1px;height:1px;position:absolute;z-index:1;right:22px;top:-3px;"' + 'path="m 0,0 l 4,4 l 0,8 l 0,0 z" filled="true" fillcolor="black" stroked="false" />', '</div>'].join('\n');
+
+	/*
+	var SVGHuebar = ['<svg class="{{cssPrefix}}svg {{cssPrefix}}svg-huebar">', '<defs>', '<linearGradient id="g" x1="0%" y1="0%" x2="0%" y2="100%">', '<stop offset="0%" stop-color="rgb(255,0,0)" />', '<stop offset="16.666%" stop-color="rgb(255,255,0)" />', '<stop offset="33.333%" stop-color="rgb(0,255,0)" />', '<stop offset="50%" stop-color="rgb(0,255,255)" />', '<stop offset="66.666%" stop-color="rgb(0,0,255)" />', '<stop offset="83.333%" stop-color="rgb(255,0,255)" />', '<stop offset="100%" stop-color="rgb(255,0,0)" />', '</linearGradient>', '</defs>', '<rect width="18px" height="100%" fill="url(#g)"></rect>', '<path transform="translate(-6,-3)" class="{{cssPrefix}}huebar-handle" d="M0 0 L4 4 L0 8 L0 0 Z" fill="black" stroke="none" />', '</svg>'].join('\n');
+
+	var VMLHuebar = ['<div class="{{cssPrefix}}vml-huebar">', '<v:rect strokecolor="#ccc" class="{{cssPrefix}}vml {{cssPrefix}}vml-huebar-bg">', '<v:fill type="gradient" method="none" colors="' + '0% rgb(255,0,0), 16.666% rgb(255,255,0), 33.333% rgb(0,255,0), 50% rgb(0,255,255), 66.666% rgb(0,0,255), 83.333% rgb(255,0,255), 100% rgb(255,0,0)' + '" angle="180" class="{{cssPrefix}}vml" />', '</v:rect>', '<v:shape class="{{cssPrefix}}vml {{cssPrefix}}huebar-handle" coordsize="1 1" style="width:1px;height:1px;position:absolute;z-index:1;right:22px;top:-3px;"' + 'path="m 0,0 l 4,4 l 0,8 l 0,0 z" filled="true" fillcolor="black" stroked="false" />', '</div>'].join('\n');
+
+	*/
 
 	var isOldBrowser = util.browser.msie && util.browser.version < 9;
 

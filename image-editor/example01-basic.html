@@ -15,46 +15,37 @@
 					<img class="logo" src="img/logo1.png" height="42" width="84">
                 </div>
                 <ul class="menu">
-					<li class="menu-item border input-wrapper">
+					<li class="menu-item input-wrapper">
 						<i class="fa fa-upload fa-2x"></i></input>
 						<!--<img src="../img/load.png" height="42" width="42"></img>-->
 						<input type="file" accept="image/*" id="input-image-file">
 					</li>
-					<li class="menu-item border" id="btn-download"><i class="fa fa-download fa-2x"></i></input></li>
+					<li class="menu-item" id="btn-download"><i class="fa fa-download fa-2x"></i></input></li>
                     <li class="menu-item disabled" id="btn-undo"><i class="fa fa-undo fa-2x"></i></input></li>
                     <li class="menu-item disabled" id="btn-redo"><i class="fa fa-repeat fa-2x"></i></input></li>
-                    <li class="menu-item" id="btn-clear-objects"><i class="fa fa-recycle fa-2x"></i></input></li>
-                    <li class="menu-item" id="btn-draw-line"><i class="fa fa-arrows-h fa-2x"></i></input></li>
-                    <li class="menu-item" id="btn-draw-rect"><i class="fa fa-stop fa-2x"></i></li>
-					<li class="menu-item" id="btn-draw-circle"><i class="fa fa-circle fa-2x"></i></li>
+                    <li class="menu-item" id="selection"><i class="fa fa-hand-paper-o fa-2x" aria-hidden="true"></i></li>
+                    <li class="menu-item" id="btn-clear-objects"><i class="fa fa-trash fa-2x"></i></input></li>
+                    <li class="menu-item" id="btn-draw-line-straight"><i class="fa fa-minus fa-2x"></i></input></li>
+                    <li class="menu-item" id="btn-draw-line-free"><img src="img/line.png" with="40" height="40"></img></input></li>
+                    <li class="menu-item" id="btn-draw-rect"><i class="fa fa-square-o fa-2x"></i></li>
+					<li class="menu-item" id="btn-draw-circle"><i class="fa fa-circle-o fa-2x"></i></li>
                     <li class="menu-item icon-text" data-icon-type="arrow" id="btn-add-icon"><i class="fa fa-long-arrow-right fa-2x"></i></li>
                     <li class="menu-item" id="btn-text">Text</li>
                 </ul>
                 <div class="sub-menu-container menu" id="draw-line-sub-menu">
                     <ul class="menu">
                         <li class="menu-item">
-                            <label><input type="radio" name="select-line-type" value="freeDrawing" checked="checked"> Free drawing</label>
-                            <label><input type="radio" name="select-line-type" value="lineDrawing"> Straight line</label>
-                        </li>
-                        <li class="menu-item">
                             <div id="tui-brush-color-picker">Brush color</div>
                         </li>
-                        <li class="menu-item"><label class="menu-item no-pointer">Brush width<input id="input-brush-width-range" type="range" min="5" max="30" value="12"></label></li>
-                        <li class="menu-item close">Close</li>
+                        <li class="menu-item close"><i class="fa fa-times fa-2x"></i></li>
                     </ul>
                 </div>
                 <div class="sub-menu-container" id="draw-shape-sub-menu">
                     <ul class="menu">
                         <li class="menu-item">
-                            <select name="select-color-type">
-								<option value="stroke">Stroke</option>
-                                <option value="fill">Fill</option>
-                            </select>
-                            <label><input type="checkbox" id="input-check-transparent" checked="checked" value="1">transparent</label>
-                            <div id="tui-shape-color-picker"></div>
+                            <div id="tui-shape-color-picker">Shape color</div>
                         </li>
-                        <li class="menu-item"><label class="menu-item no-pointer">Stroke width<input id="input-stroke-width-range" type="range" min="0" max="300" value="12"></label></li>
-                        <li class="menu-item close">Close</li>
+                        <li class="menu-item close"><i class="fa fa-times fa-2x"></i></li>
                     </ul>
                 </div>
                 <div class="sub-menu-container" id="icon-sub-menu">
@@ -62,20 +53,22 @@
                         <li class="menu-item">
                             <div id="tui-arrow-color-picker">Arrow color</div>
                         </li>
-                        <li class="menu-item close">Close</li>
+                        <li class="menu-item close"><i class="fa fa-times fa-2x"></i></li>
                     </ul>
                 </div>
                 <div class="sub-menu-container" id="text-sub-menu">
                     <ul class="menu">
-                        <li class="menu-item"><label class="no-pointer"><input id="input-font-size-range" type="range" min="10" max="100" value="10"></label></li>
                         <li class="menu-item">
                             <div id="tui-text-color-picker">Text color</div>
                         </li>
-                        <li class="menu-item close">Close</li>
+                        <li class="menu-item close"><i class="fa fa-times fa-2x"></i></li>
                     </ul>
                 </div>
             </div>
             <div class="tui-image-editor"></div>
+        </br>
+            <a href="#" class="button">Save</a>
+            <a href="#" class="button2">Cancel</a>
         </div>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.7/fabric.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

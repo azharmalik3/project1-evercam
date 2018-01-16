@@ -3,6 +3,7 @@
 }
 .body-container {
     width: 1000px;
+    margin: 0 auto;
 }
 .tui-image-editor-controls {
     min-height: 250px;
@@ -125,4 +126,38 @@
     border: 1px solid #bfbebe;
     background-color: #fff;
     z-index: 9999;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 100px;
+    margin-left: 10px;
+    cursor: pointer;
+    float: right;
+}
+
+.button2 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    float: right;
 }
