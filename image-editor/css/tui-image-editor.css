@@ -81,7 +81,7 @@
     overflow: hidden;
 }
 .tui-colorpicker-container {
-    margin: 0 auto;
+    margin: 5px auto 0;
 }
 .tui-colorpicker-palette-toggle-slider {
     display: none;
