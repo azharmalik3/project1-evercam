@@ -2000,7 +2000,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    options = this.options = util.extend({
 	        container: null,
 	        color: '#f8f8f8',
-	        preset: ['#000000', '#0000FF', '#FFFF00', '#00FF40', '#00FFFF', '#FF0000', '#FF00FF', '#FFFFFF'],
+	        preset: ['#000000', '#0000FF', '#FFFF00', '#00FF40', '#FF0000', '#FFFFFF'],
 	        cssPrefix: 'tui-colorpicker-',
 	        detailTxt: 'Detail'
 	    }, options);
@@ -2445,7 +2445,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	    this.options = util.extend({
 	        cssPrefix: 'tui-colorpicker-',
-	        preset: ['#000000', '#0000FF', '#FFFF00', '#00FF40', '#00FFFF', '#FF0000', '#FF00FF', '#FFFFFF'],
+	        preset: ['#000000', '#0000FF', '#FFFF00', '#00FF40', '#FF0000', '#FFFFFF'],
 	        detailTxt: 'Detail'
 	    }, options);
 

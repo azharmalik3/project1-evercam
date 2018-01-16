@@ -5,7 +5,6 @@
  */
 'use strict';
 
-//var colorPicker = require('tui-color-picker');
 var supportingFileAPI = !!(window.File && window.FileList && window.FileReader);
 var rImageType = /data:(image\/.+);base64,/;
 var shapeOptions = {};
@@ -40,16 +39,6 @@ var $inputStrokeWidthRange = $('#input-stroke-width-range');
 var $inputCheckTransparent = $('#input-check-transparent');
 var $inputCheckGrayscale = $('#input-check-grayscale');
 
-// Sub menus
-var $displayingSubMenu = $();
-var $freeDrawingSubMenu = $('#free-drawing-sub-menu');
-var $drawLineSubMenu = $('#draw-line-sub-menu');
-var $drawShapeSubMenu = $('#draw-shape-sub-menu');
-var $textSubMenu = $('#text-sub-menu');
-var $iconSubMenu = $('#icon-sub-menu');
-var $filterSubMenu = $('#filter-sub-menu');
-var $imageFilterSubMenu = $('#image-filter-sub-menu');
-
 // Select line type
 var $selectLine = $('[name="select-line-type"]');
 
@@ -66,37 +55,36 @@ var $selectBlendType = $('[name="select-blend-type"]');
 
 // Image editor
 var imageEditor = new tui.ImageEditor('.tui-image-editor', {
-    cssMaxWidth: 800,
-    cssMaxHeight: 600,
+    cssMaxWidth: 1000,
+    cssMaxHeight: 800,
     selectionStyle: {
         cornerSize: 20,
         rotatingPointOffset: 70
     }
 });
 
-// Color picker for free drawing
-var instanceBrush = tui.colorPicker.create({
-    //container: document.getElementByClassName("tui-color-picker"),
-	container: $('#tui-brush-color-picker')[0],
-    color: '#000000'
+var colorpicker = tui.colorPicker.create({
+    container: document.getElementById('color-picker')
 });
 
-var instanceText = tui.colorPicker.create({
-    //container: document.getElementByClassName("tui-color-picker"),
-	container: $('#tui-text-color-picker')[0],
-    color: '#000000'
+colorpicker.on('selectColor', function(event) {
+    var color = event.color;
+    imageEditor.setBrush({
+        color: hexToRGBa(color, 1.0)
+    });
+
+    imageEditor.changeShape(activeObjectId, {
+        stroke: color
+    });
+    imageEditor.setDrawingShape(shapeType, shapeOptions);
+
+    imageEditor.changeTextStyle(activeObjectId, {
+        'fill': color
+    });
+
+    imageEditor.changeIconColor(activeObjectId, color);
 });
 
-var instanceShape = tui.colorPicker.create({
-    //container: document.getElementByClassName("tui-color-picker"),
-	container: $('#tui-shape-color-picker')[0],
-    color: '#000000'
-});
-
-var instanceArrow = tui.colorPicker.create({
-    container: $('#tui-arrow-color-picker')[0],
-    color: '#000000'
-});
 
 // Common global functions
 // HEX to RGBA
@@ -131,27 +119,8 @@ function base64ToBlob(data) {
 }
 
 function setShapeToolbar(obj) {
-    var strokeColor, fillColor, isTransparent;
-    var colorType = $selectColorType.val();
-
-    if (colorType === 'stroke') {
-        strokeColor = obj.stroke;
-        isTransparent = (strokeColor === 'transparent');
-
-        if (!isTransparent) {
-            shapeColorpicker.setColor(strokeColor);
-        }
-    } else if (colorType === 'fill') {
-        fillColor = obj.fill;
-        isTransparent = (fillColor === 'transparent');
-
-        if (!isTransparent) {
-            shapeColorpicker.setColor(fillColor);
-        }
-    }
-
-    $inputCheckTransparent.prop('checked', isTransparent);
-    $inputStrokeWidthRange.val(obj.strokeWidth);
+    var fillColor = obj.fill;
+    colorpicker.setColor(fillColor);
 }
 
 function resizeEditor() {
@@ -164,7 +133,7 @@ function resizeEditor() {
 
 function getBrushSettings() {
     var brushWidth = 10;//
-    var brushColor = instanceBrush.getColor();
+    var brushColor = colorpicker.getColor();
 
     return {
         width: brushWidth,
@@ -199,44 +168,12 @@ function setTextToolbar(obj) {
     var fontColor = obj.fill;
 
     $inputFontSizeRange.val(fontSize);
-    instanceText.setColor(fontColor);
+    colorpicker.setColor(fontColor);
 }
 
 function setIconToolbar(obj) {
     var iconColor = obj.fill;
-
-    instanceArrow.setColor(iconColor);
-}
-
-function showSubMenu(type) {
-    var $submenu;
-
-    switch (type) {
-        case 'shape':
-            $submenu = $drawShapeSubMenu;
-            break;
-        case 'icon':
-            $submenu = $iconSubMenu;
-            break;
-        case 'text':
-            $submenu = $textSubMenu;
-            break;
-        default:
-            $submenu = 0;
-    }
-
-    $displayingSubMenu.hide();
-    $displayingSubMenu = $submenu.show();
-}
-
-function applyOrRemoveFilter(applying, type, options) {
-    if (applying) {
-        imageEditor.applyFilter(type, options).then(result => {
-            console.log(result);
-        });
-    } else {
-        imageEditor.removeFilter(type);
-    }
+    colorpicker.setColor(iconColor);
 }
 
 // Attach image editor custom events
@@ -275,21 +212,18 @@ imageEditor.on({
     objectActivated: function(obj) {
         activeObjectId = obj.id;
         if (obj.type === 'rect' || obj.type === 'circle' || obj.type === 'triangle') {
-            showSubMenu('shape');
             setShapeToolbar(obj);
             activateShapeMode();
         } else if (obj.type === 'icon') {
-            showSubMenu('icon');
             setIconToolbar(obj);
             activateIconMode();
         } else if (obj.type === 'text') {
-            showSubMenu('text');
             setTextToolbar(obj);
             activateTextMode();
         }
     },
     mousedown: function(event, originPointer) {
-        if ($imageFilterSubMenu.is(':visible') && imageEditor.hasFilter('colorFilter')) {
+        if (imageEditor.hasFilter('colorFilter')) {
             imageEditor.applyFilter('colorFilter', {
                 x: parseInt(originPointer.x, 10),
                 y: parseInt(originPointer.y, 10)
@@ -312,33 +246,27 @@ $btnsActivatable.on('click', function() {
 });
 
 $btnUndo.on('click', function() {
-    $displayingSubMenu.hide();
-
     if (!$(this).hasClass('disabled')) {
         imageEditor.undo();
     }
 });
 
 $btnRedo.on('click', function() {
-    $displayingSubMenu.hide();
-
     if (!$(this).hasClass('disabled')) {
         imageEditor.redo();
     }
 });
 
 $btnClearObjects.on('click', function() {
-    $displayingSubMenu.hide();
     imageEditor.clearObjects();
 });
 
 $btnClose.on('click', function() {
     imageEditor.stopDrawingMode();
-    $displayingSubMenu.hide();
 });
 
 $inputBrushWidthRange.on('change', function() {
-    imageEditor.setBrush({width: 8});//parseInt(this.value, 10)}
+    imageEditor.setBrush({width: 8});
 });
 
 $inputImage.on('change', function(event) {
@@ -379,9 +307,6 @@ $btnDownload.on('click', function() {
 // control draw line mode
 $btnDrawLinefree.on('click', function() {
     imageEditor.stopDrawingMode();
-    $displayingSubMenu.hide();
-    $displayingSubMenu = $drawLineSubMenu.show();
-    //$selectLine.eq(0).change();
 
     var settings = getBrushSettings();
     imageEditor.stopDrawingMode();
@@ -390,29 +315,19 @@ $btnDrawLinefree.on('click', function() {
 
 $btnDrawLinestraight.on('click', function() {
     imageEditor.stopDrawingMode();
-    $displayingSubMenu.hide();
-    $displayingSubMenu = $drawLineSubMenu.show();
-    //$selectLine.eq(0).change();
 
     var settings = getBrushSettings();
     imageEditor.stopDrawingMode();
     imageEditor.startDrawingMode('LINE_DRAWING', settings);
 });
 
-instanceBrush.on('selectColor', function(event) {
-    imageEditor.setBrush({
-        color: hexToRGBa(event.color, 1.0)
-    });
-});
-
 // control draw shape mode
 $btnDrawRect.on('click', function() {
-    showSubMenu('shape');
 
     shapeOptions.stroke = '#000000';
     shapeOptions.fill = 'transparent';
 
-    shapeOptions.strokeWidth = 10;//Number($inputStrokeWidthRange.val())
+    shapeOptions.strokeWidth = 10;
 
     // step 2. set options to draw shape
     imageEditor.setDrawingShape('rect', shapeOptions);
@@ -422,7 +337,6 @@ $btnDrawRect.on('click', function() {
 });
 
 $btnDrawCircle.on('click', function() {
-    showSubMenu('shape');
 
     shapeOptions.stroke = '#000000';
     shapeOptions.fill = 'transparent';
@@ -438,29 +352,16 @@ $btnDrawCircle.on('click', function() {
 
 $drawRectangle.on('change', function() {
     shapeType = $(this).val();
-
     imageEditor.setDrawingShape(shapeType);
 });
 
 $drawCircle.on('change', function() {
     shapeType = $(this).val();
-
     imageEditor.setDrawingShape(shapeType);
-});
-
-instanceShape.on('selectColor', function(event) {
-    var color = event.color;
-
-    imageEditor.changeShape(activeObjectId, {
-        stroke: color
-    });
-
-    imageEditor.setDrawingShape(shapeType, shapeOptions);
 });
 
 // control text mode
 $btnText.on('click', function() {
-    showSubMenu('text');
     activateTextMode();
 });
 
@@ -470,17 +371,9 @@ $inputFontSizeRange.on('change', function() {
     });
 });
 
-instanceText.on('selectColor', function(event) {
-    imageEditor.changeTextStyle(activeObjectId, {
-        'fill': event.color
-    });
-});
-
 // control icon
 $btnAddIcon.on('click', function() {
-    showSubMenu('icon');
     activateIconMode();
-	//var element = event.target || event.srcElement;
 
     imageEditor.once('mousedown', function(e, originPointer) {
         imageEditor.addIcon('arrow', {
@@ -490,10 +383,6 @@ $btnAddIcon.on('click', function() {
             console.log(objectProps);
         });
     });
-});
-
-instanceArrow.on('selectColor', function(event) {
-    imageEditor.changeIconColor(activeObjectId, event.color);
 });
 
 // Load sample image
