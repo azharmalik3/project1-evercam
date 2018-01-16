@@ -333,8 +333,8 @@ $btnRedo.on('click', function() {
 });
 
 $btnClearObjects.on('click', function() {
-    $displayingSubMenu.hide();
     imageEditor.clearObjects();
+    //myfunction();
 });
 
 $btnClose.on('click', function() {
