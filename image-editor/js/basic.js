@@ -279,7 +279,7 @@ imageEditor.on({
     },
     objectActivated: function(obj) {
         activeObjectId = obj.id;
-        if (obj.type === 'rect' || obj.type === 'circle' || obj.type === 'triangle') {
+        if (obj.type === 'rect' || obj.type === 'circle') {
             showSubMenu('shape');
             setShapeToolbar(obj);
             activateShapeMode();
