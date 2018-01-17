@@ -1,6 +1,6 @@
 {
    "nav_icon": "logo.png",
-   "firstPhotoId":"112379",
+   "firstPhotoId":"1",
    "firstPhotoRotation":150,
    "soundEffects": {
       "navButton": {
@@ -27,14 +27,14 @@
       }
    },
    "photos":{
-      "112362":{
+      "1":{
          "rotationOffset": 0,
          "uri":"office.jpg",
          "tooltips":[
             {
                "text":"The construction",
                "rotationY": -9.929,
-               "linkedPhotoId":"112379"
+               "linkedPhotoId":"1"
             },
             {
                "type": "image",
@@ -47,14 +47,14 @@
             }
          ]
       },
-      "112379":{
+      "2":{
          "rotationOffset": -120,
          "uri":"example.jpg",
          "tooltips":[
             {
                "text":"The ofice",
                "rotationY": -64.525,
-               "linkedPhotoId":"112362"
+               "linkedPhotoId":"2"
             },
             {
                "type": "panelimage",
