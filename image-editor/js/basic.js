@@ -55,7 +55,6 @@ var $selectLine = $('[name="select-line-type"]');
 
 // Select shape type
 var $selectShapeType = $('[name="select-shape-type"]');
-var $drawCircle = $('#type-circle');
 var $drawRectangle = $('#type-rectangle');
 
 // Select color of shape type
@@ -272,7 +271,10 @@ imageEditor.on({
     },
     addText: function(pos) {
         imageEditor.addText('Double Click', {
-            position: pos.originPosition
+            position: pos.originPosition,
+            styles: {
+                fontSize: '150'
+             }
         }).then(objectProps => {
             console.log(objectProps);
         });
@@ -382,17 +384,6 @@ $btnDownload.on('click', function() {
 });
 
 // control draw line mode
-$btnDrawLinefree.on('click', function() {
-    imageEditor.stopDrawingMode();
-    $displayingSubMenu.hide();
-    $displayingSubMenu = $drawLineSubMenu.show();
-    //$selectLine.eq(0).change();
-
-    var settings = getBrushSettings();
-    imageEditor.stopDrawingMode();
-    imageEditor.startDrawingMode('FREE_DRAWING', settings);
-});
-
 $btnDrawLinestraight.on('click', function() {
     imageEditor.stopDrawingMode();
     $displayingSubMenu.hide();
@@ -402,6 +393,17 @@ $btnDrawLinestraight.on('click', function() {
     var settings = getBrushSettings();
     imageEditor.stopDrawingMode();
     imageEditor.startDrawingMode('LINE_DRAWING', settings);
+});
+
+$btnDrawLinefree.on('click', function() {
+    imageEditor.stopDrawingMode();
+    $displayingSubMenu.hide();
+    $displayingSubMenu = $drawLineSubMenu.show();
+    //$selectLine.eq(0).change();
+
+    var settings = getBrushSettings();
+    imageEditor.stopDrawingMode();
+    imageEditor.startDrawingMode('FREE_DRAWING', settings);
 });
 
 instanceBrush.on('selectColor', function(event) {
@@ -439,18 +441,6 @@ $btnDrawCircle.on('click', function() {
 
     // step 3. start drawing shape mode
     activateShapeMode();
-});
-
-$drawRectangle.on('change', function() {
-    shapeType = $(this).val();
-
-    imageEditor.setDrawingShape(shapeType);
-});
-
-$drawCircle.on('change', function() {
-    shapeType = $(this).val();
-
-    imageEditor.setDrawingShape(shapeType);
 });
 
 instanceShape.on('selectColor', function(event) {

@@ -2576,7 +2576,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var layout = ['<ul class="{{cssPrefix}}clearfix">{{colorList}}</ul>', '<div class="{{cssPrefix}}clearfix" style="overflow:hidden">', '<input type="button" class="{{cssPrefix}}palette-toggle-slider" value="{{detailTxt}}" />', '</div>'].join('\n');
+	var layout = ['<ul class="{{cssPrefix}}clearfix">{{colorList}}</ul>', '<div class="{{cssPrefix}}clearfix" style="overflow:hidden">', '</div>'].join('\n');
 
 	var item = '<li><input class="{{cssPrefix}}palette-button{{selected}}" type="button" style="background-color:{{color}};color:{{color}}" title="{{color}}" value="{{color}}" /></li>';
 

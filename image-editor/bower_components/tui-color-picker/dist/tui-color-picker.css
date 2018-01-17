@@ -17,13 +17,14 @@
   display: block;
 }
 .tui-colorpicker-container {
-  width: 152px;
+  width: 115px;
+  height: 5px;
 }
 .tui-colorpicker-palette-container {
-  width: 152px;
+  width: 115px;
 }
 .tui-colorpicker-palette-container ul {
-  width: 152px;
+  width: 115px;
   margin: 0px;
   padding: 0px;
 }
