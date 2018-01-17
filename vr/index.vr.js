@@ -105,7 +105,7 @@ class TourSample extends React.Component {
             // contribute to the layout of other views.
             style={{
               position: 'absolute',
-              tintColor: isLoading ? 'grey' : 'white',
+              tintColor: isLoading ? 'black' : 'white',
             }}
             onLoad={() => {
               const data = this.state.data;
