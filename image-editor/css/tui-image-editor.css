@@ -148,6 +148,7 @@
     margin-left: 10px;
     cursor: pointer;
     float: right;
+    font-family: "arial";
 }
 
 .button2 {
@@ -165,4 +166,5 @@
     margin-left: 10px;
     cursor: pointer;
     float: right;
+    font-family: "arial";
 }

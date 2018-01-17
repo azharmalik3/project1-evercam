@@ -32,11 +32,11 @@ var APP_DATA = {
       "infoHotspots": []
     }
   ],
-  "name": "Project Title",
+  "name": "Simple viewer",
   "settings": {
     "mouseViewMode": "drag",
     "autorotateEnabled": true,
-    "fullscreenButton": false,
-    "viewControlButtons": false
+    "fullscreenButton": true,
+    "viewControlButtons": true
   }
 };
