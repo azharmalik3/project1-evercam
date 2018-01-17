@@ -132,6 +132,9 @@ class TourSample extends React.Component {
                 height: MAX_TEXTURE_HEIGHT,
               }}>
               {/* Need container view, else using absolute position on buttons removes them from cylinder */}
+              <View style={{ margin: 0.1, height: 0.3, backgroundColor: 'red'}}>
+                <Text style={{fontSize: 0.2, textAlign: 'center'}}>Red</Text>
+              </View>
               <View>
                 {tooltips &&
                   tooltips.map((tooltip, index) => {
