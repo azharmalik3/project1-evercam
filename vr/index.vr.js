@@ -42,7 +42,7 @@ const PPM = 1 / (2 * Math.PI * 3) * MAX_TEXTURE_WIDTH;
  */
 class TourSample extends React.Component {
   static defaultProps = {
-    tourSource: 'tourOfTheChester.json',
+    tourSource: 'mytour.json',
   };
 
   constructor(props) {
