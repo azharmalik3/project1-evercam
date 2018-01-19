@@ -6,11 +6,6 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* define a fixed width for the entire menu */
-.navigation {
-  width: 300px;
-}
-
 /* reset our lists to remove bullet points and padding */
 .mainmenu, .submenu {
   list-style: none;
@@ -18,12 +13,15 @@ html, body {
   margin: 0;
 }
 
+.mainmanu {
+	position:relative;
+	z-index: 15000001;
+}
+
 /* make ALL links (main and submenu) have padding and background color */
 .mainmenu a {
-  display: block;
   background-color: #CCC;
   text-decoration: none;
-  padding: 10px;
   color: #000;
 }
 
@@ -39,7 +37,6 @@ html, body {
 */
 
 .mainmenu li:hover .submenu {
-  display: block;
   max-height: 200px;
 }
 
@@ -50,7 +47,6 @@ html, body {
 
 .submenu a {
   background-color: #999;
-  z-index: 999;
 }
 
 /* hover behaviour for links inside .submenu */
@@ -65,31 +61,45 @@ html, body {
   overflow: hidden;
   max-height: 0;
   -webkit-transition: all 0.5s ease-out;
+  position:absolute;
 }
 
 div * {
-     display: inline-block;
-     width: 200px;
-}
-
-table, td{    
-    text-align: left;
-}
-
-table {
-    border-collapse: collapse;
-    width: 50%;
-}
-
-td {
-    padding: 15px;
+    display: inline-block;
 }
 
 img {
 	width: 200px;
 }
 
-button {
-	width: 100px;
+a {
+	width: 150px;
+	padding: 8px;
+}
+
+.label {
+	width: 200px;
+	margin: 5px;
+}
+
+div {
+	height: 150px;
+}
+
+.content {
+	position:relative;
+	height:500px;
+	background-color:white;
+	opacity:0.9;
+	clear: both;
+	z-index:1;
+}
+
+li {
+	display: block;
+}
+
+a {
+	text-align: center;
 }
 
