@@ -5,30 +5,62 @@
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <title>Image editor mobile</title>
         <link rel="stylesheet" href="style.css">
+		<link type="text/css" rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
     </head>
     <body>
-		<img class="logo" src="img/logo1.png">
-        <ul>
-			<li>
-				<p>Stable version of image editor: </p>
-				<button onclick="window.location.href='image-editor/example01-basic.html'">Basic version</button>
-			</li>
-			<li>
-				<p>Unstable version of image editor: </p>
-				<button onclick="window.location.href='image-editor/example02-mobile.html'">Mobile version</button>
-			</li>
-			<li>
-				<p>Simple version of 360 viewer: </p>
-				<button onclick="window.location.href='simpleviewer/index.html'">Simple 360 viewer</button>
-			</li>
-			<li>
-				<p>Tour 360 react VR: </p>
-				<button onclick="window.location.href='vr/vr/index.html'">Tour 360</button>
-			</li>
-		</ul>
-		<!--
-		<iframe width="640px" height="400px" allowfullscreen frameborder="0" src="https://project1-evercam.herokuapp.com/simpleviewer/index.html"></iframe>
-		<iframe width="640px" height="400px" allowfullscreen frameborder="0" src="https://project1-evercam.herokuapp.com/vr/index.html"></iframe>
-		-->
+		<img class="logo" src="img/logo1.png"></br></br>
+		<table>
+			<tr class="line" id="image-editor">
+				<td><span class="label"><a href="image-editor/example01-basic.html"><img src="img/build.jpg" width="80" height="80"></img></a></span></td>
+				<td><span class="label">ESB friday 12 January</span></td>
+				<td><span class="label mainmenu"><a href='image-editor/example01-basic.html'>Edit</a></span></td>
+				<td>
+					<ul class="mainmenu">
+						<li><span class="label" id="btn-share"><a href='image-editor/example01-basic.html'>Share</a></span>
+							<ul class="submenu">
+								<li>
+									<a href="http://twitter.com/share?url=<URL>&text=<TEXT>&via=<VIA>" target="_blank" class="share-btn twitter">
+										<i class="fa fa-twitter"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://web.whatsapp.com/send?text=http://localhost/proyect1/img/build.jpg" target="_blank" class="share-btn google-plus">
+										<i class="fa fa-whatsapp"></i>
+									</a>
+								</li>
+								<li>
+									<a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank" class="share-btn facebook">
+										<i class="fa fa-facebook"></i>
+									</a>
+								</li>
+								<li>
+									<a href="http://www.linkedin.com/shareArticle?url=<URL>&title=<TITLE>&summary=<SUMMARY>&source=<SOURCE_URL>" target="_blank" class="share-btn linkedin">
+										<i class="fa fa-linkedin"></i>
+									</a>
+								</li>
+								<li>
+									<a href="mailto:?body=http://localhost/proyect1/img/build.jpg" target="_blank" class="share-btn email">
+										<i class="fa fa-envelope"></i>
+									</a>
+								</li>
+							<ul>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		
+
+			<tr class="line" id="waxie-360">
+				<td><span class="label"><a href="image-editor/example01-basic.html"><img src="img/waxie.png" width="80" height="80"></img></a></span></td>
+				<td><span class="label">Waxie office 360 (tail)</span></td>
+				<td><span class="label mainmenu"><a href='simpleviewer/index.html'>View</a></span></td>
+			</tr>
+
+			<tr class="line" id="waxie-tour">
+				<td><span class="label"><a href="image-editor/example01-basic.html"><img src="img/waxie.png" width="80" height="80"></img></a></span></td>
+				<td><span class="label">Waxie office tour</span></td>
+				<td><span class="label mainmenu"><a href='vr/vr/index.html'>View</a></span></td>
+			</tr>
+		</table>
     </body>
 </html>
