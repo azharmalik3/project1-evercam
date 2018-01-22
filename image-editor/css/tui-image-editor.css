@@ -7,6 +7,7 @@
 }
 .tui-image-editor-controls {
     min-height: 250px;
+	z-index: 1;
 }
 .menu {
     padding: 0;
@@ -74,6 +75,7 @@
 }
 .tui-image-editor {
     height: 200px;
+	z.index: -1;
 }
 .tui-image-editor-canvas-container {
     margin: 0 auto;
@@ -192,7 +194,6 @@
 .mainmanu {
 	position:relative;
 	z-index: 15000001;
-	margin-left: 250px;
 }
 
 /* make ALL links (main and submenu) have padding and background color */
@@ -236,7 +237,7 @@
 .submenu {
   overflow: hidden;
   max-height: 0;
-  -webkit-transition: all 0.5s ease-out height 4s;
+  -webkit-transition: all 0.5s ease-out;
   position:absolute;
 }
 
