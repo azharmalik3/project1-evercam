@@ -5,7 +5,6 @@
  */
 'use strict';
 
-//var colorPicker = require('tui-color-picker');
 var supportingFileAPI = !!(window.File && window.FileList && window.FileReader);
 var rImageType = /data:(image\/.+);base64,/;
 var shapeOptions = {};

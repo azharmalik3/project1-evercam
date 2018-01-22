@@ -10,16 +10,12 @@
 		<meta property="og:type" content="website" />
 		
 		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-		<meta name="twitter:card" content="player" />
-		<meta name="twitter:site" content="@rchoi" />
-		<meta name="twitter:title" content="Sample Player Card" />
-		<meta name="twitter:description" content="This is a sample video. When you implement, make sure all links are secure." />
-		<meta name="twitter:image" content="https://yoursite.com/example.png" />
-		<meta name="twitter:player" content="https://yoursite.com/container.html" />
-		<meta name="twitter:player:width" content="480" />
-		<meta name="twitter:player:height" content="480" />
-		<meta name="twitter:player:stream" content="https://yoursite.com/example.mp4" />
-		<meta name="twitter:player:stream:content_type" content="video/mp4" />
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@nytimes">
+		<meta name="twitter:creator" content="@rmtapita">
+		<meta name="twitter:title" content="Parade of Fans for Houston’s Funeral">
+		<meta name="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here.">
+		<meta name="twitter:image" content="https://project1-evercam.herokuapp.com/img/build.jpg">
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no">
@@ -37,7 +33,7 @@
 					<li><a href='image-editor/example01-basic.html'>Share</a>
 						<ul class="submenu">
 							<li>
-								<a href="http://twitter.com/share?url=https://project1-evercam.herokuapp.com/img/build.jpg&text=This is a photo from evercam&via=evrcm" target="_blank" class="share-btn twitter">
+								<a href="http://twitter.com/share?url=https://project1-evercam.herokuapp.com/&text=This is a photo from evercam&via=rmtapita" target="_blank" class="share-btn twitter">
 									<i class="fa fa-twitter"></i>
 								</a>
 							</li>
@@ -57,8 +53,13 @@
 								</a>
 							</li>
 							<li>
-								<a href="mailto:?body=http://localhost/proyect1/img/build.jpg" target="_blank" class="share-btn email">
+								<a href="mailto:?body=https://project1-evercam.herokuapp.com/img/build.jpg" target="_blank" class="share-btn email">
 									<i class="fa fa-envelope"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#" id="clipboard" target="_blank" class="share-btn email">
+									<i class="fa fa-clone"></i>
 								</a>
 							</li>
 						<ul>
@@ -77,6 +78,34 @@
 			<span class="label">Waxie office tour</span>
 			<span class="label mainmenu"><a href='vr/vr/index.html'>View</a></span>
 		</div>
-		
+		<script>
+			var img = document.createElement('img');
+			img.src = canvas.toDataURL()
+
+			var div = document.createElement('div');
+			div.contentEditable = true;
+			div.appendChild(img);
+			document.body.appendChild(div);
+
+			// do copy
+			SelectText(div);
+			document.execCommand('Copy');
+			document.body.removeChild(div);
+			
+			function SelectText(element) {
+				var doc = document;
+				if (doc.body.createTextRange) {
+					var range = document.body.createTextRange();
+					range.moveToElementText(element);
+					range.select();
+				} else if (window.getSelection) {
+					var selection = window.getSelection();
+					var range = document.createRange();
+					range.selectNodeContents(element);
+					selection.removeAllRanges();
+					selection.addRange(range);
+				}
+			}
+		</script>
     </body>
 </html>

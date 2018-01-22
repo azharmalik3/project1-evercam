@@ -37,7 +37,7 @@ html, body {
 */
 
 .mainmenu li:hover .submenu {
-  max-height: 200px;
+  max-height: 250px;
 }
 
 /*
@@ -83,7 +83,7 @@ a {
 }
 
 div {
-	height: 150px;
+	height: 160px;
 }
 
 .content {
