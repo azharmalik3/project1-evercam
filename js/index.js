@@ -1,5 +1,6 @@
 var $clipboard = $('#clipboard');
 
+
 $clipboard.on('click',function(e){
 	var img = document.createElement('img');
 	img.src = canvas.toDataURL()
@@ -13,6 +14,7 @@ $clipboard.on('click',function(e){
 	SelectText(div);
 	document.execCommand('Copy');
 	document.body.removeChild(div);
+	alert('image copied!');
 });
 
 function SelectText(element) {

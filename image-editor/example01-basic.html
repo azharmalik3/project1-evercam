@@ -69,43 +69,43 @@
                     </li>
                 </ul>         
             </div>
-            <div class="tui-image-editor"></div>
+            <div class="tui-image-editor" id="miimagen"></div>
         </br>
             <a href="#" class="button">Save</a>
             <a href="#" class="button2">Cancel</a>
         </div>
-		<div>
+		<div id="container-share">
 			<span class="label" id="btn-share">
 				<ul class="mainmenu">
-					<li><a href='image-editor/example01-basic.html'>Share</a>
+					<li><a href='image-editor/example01-basic.html' class="buttons button3">Share</a>
 						<ul class="submenu">
 							<li>
-								<a href="http://twitter.com/share?url=https://project1-evercam.herokuapp.com/img/build.jpg&text=This is a photo from evercam&via=evrcm" target="_blank" class="share-btn twitter">
+								<a href="http://twitter.com/share?url=https://project1-evercam.herokuapp.com/&text=This is a photo from evercam&via=rmtapita" target="_blank" class="buttons share-btn twitter">
 									<i class="fa fa-twitter"></i>
 								</a>
 							</li>
 							<li>
-								<a href="https://web.whatsapp.com/send?text=https://project1-evercam.herokuapp.com" target="_blank" class="share-btn whatsapp">
+								<a href="https://web.whatsapp.com/send?text=https://project1-evercam.herokuapp.com/img.html" target="_blank" class="buttons share-btn whatsapp">
 									<i class="fa fa-whatsapp"></i>
 								</a>
 							</li>
 							<li>
-								<a href="http://www.facebook.com/sharer.php?u=https://project1-evercam.herokuapp.com/img/build.jpg" target="_blank" class="share-btn facebook">
+								<a href="http://www.facebook.com/sharer.php?u=https://project1-evercam.herokuapp.com/img/build.jpg" target="_blank" class="buttons share-btn facebook">
 									<i class="fa fa-facebook"></i>
 								</a>
 							</li>
 							<li>
-								<a href="http://www.linkedin.com/shareArticle?url=https://project1-evercam.herokuapp.com/img/build.jpg&title=My photo&summary=This is a photo from evercam&source=<SOURCE_URL>" target="_blank" class="share-btn linkedin">
+								<a href="http://www.linkedin.com/shareArticle?url=https://project1-evercam.herokuapp.com/img/build.jpg&title=My photo&summary=This is a photo from evercam&source=<SOURCE_URL>" target="_blank" class="buttons share-btn linkedin">
 									<i class="fa fa-linkedin"></i>
 								</a>
 							</li>
 							<li>
-								<a href="mailto:?body=https://project1-evercam.herokuapp.com/img/build.jpg" target="_blank" class="share-btn email">
+								<a href="mailto:?body=<a>https://project1-evercam.herokuapp.com/img/build.jpg</a>" target="_blank" class="share-btn email buttons">
 									<i class="fa fa-envelope"></i>
 								</a>
 							</li>
 							<li>
-								<a href="#" id="clipboard" target="_blank" class="share-btn email">
+								<a href="#" id="clipboard" class="share-btn copy buttons" data-clipboard-action="copy" data-clipboard-target="#miimagen">
 									<i class="fa fa-clone"></i>
 								</a>
 							</li>
@@ -120,6 +120,7 @@
 		<script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
 		<script src="bower_components/tui-color-picker/dist/tui-color-picker.js"></script>
         <script type="text/javascript" src="js/tui-image-editor.js"></script>
+		<script src="../node_modules/clipboard/dist/clipboard.min.js"></script>
         <script src="js/basic.js"></script>
     </body>
 </html>

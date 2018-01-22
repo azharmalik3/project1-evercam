@@ -4,6 +4,38 @@
  * @fileoverview
  */
 'use strict';
+var $clipboard = $('#clipboard');
+new Clipboard('#clipboard');
+
+$clipboard.on('click',function(e){
+	var img = document.createElement('img');
+	img.src = imageEditor.toDataURL()
+
+	var div1 = document.createElement('div');
+	div1.contentEditable = true;
+	div1.appendChild(img);
+	document.body.appendChild(div1);
+
+	// do copy
+	SelectText(div1);
+	document.execCommand('Copy');
+	//document.body.removeChild(div1);
+});
+			
+function SelectText(element) {
+	var doc = document;
+	if (doc.body.createTextRange) {
+		var range = document.body.createTextRange();
+		range.moveToElementText(element);
+		range.select();
+	} else if (window.getSelection) {
+		var selection = window.getSelection();
+		var range = document.createRange();
+		range.selectNodeContents(element);
+		selection.removeAllRanges();
+		selection.addRange(range);
+	}
+}
 
 var supportingFileAPI = !!(window.File && window.FileList && window.FileReader);
 var rImageType = /data:(image\/.+);base64,/;

@@ -169,6 +169,19 @@
     font-family: "arial";
 }
 
+.buttons {
+	background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "arial";
+}
+
 /* reset our lists to remove bullet points and padding */
 .mainmenu, .submenu {
   list-style: none;
@@ -179,13 +192,12 @@
 .mainmanu {
 	position:relative;
 	z-index: 15000001;
+	margin-left: 250px;
 }
 
 /* make ALL links (main and submenu) have padding and background color */
 .mainmenu a {
-  background-color: #CCC;
   text-decoration: none;
-  color: #000;
 }
 
 /* add hover behaviour */
@@ -200,7 +212,7 @@
 */
 
 .mainmenu li:hover .submenu {
-  max-height: 250px;
+  max-height: 400px;
 }
 
 /*
@@ -210,6 +222,7 @@
 
 .submenu a {
   background-color: #999;
+  width: 100px;
 }
 
 /* hover behaviour for links inside .submenu */
@@ -223,7 +236,7 @@
 .submenu {
   overflow: hidden;
   max-height: 0;
-  -webkit-transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out height 4s;
   position:absolute;
 }
 

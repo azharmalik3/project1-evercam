@@ -13,8 +13,8 @@
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:site" content="@nytimes">
 		<meta name="twitter:creator" content="@rmtapita">
-		<meta name="twitter:title" content="Parade of Fans for Houston’s Funeral">
-		<meta name="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here.">
+		<meta name="twitter:title" content="Evercam">
+		<meta name="twitter:description" content="TIME-LAPSE & PROJECT MANAGEMENT CAMERAS.">
 		<meta name="twitter:image" content="https://project1-evercam.herokuapp.com/img/build.jpg">
 
         <meta charset="UTF-8">
@@ -78,34 +78,5 @@
 			<span class="label">Waxie office tour</span>
 			<span class="label mainmenu"><a href='vr/vr/index.html'>View</a></span>
 		</div>
-		<script>
-			var img = document.createElement('img');
-			img.src = canvas.toDataURL()
-
-			var div = document.createElement('div');
-			div.contentEditable = true;
-			div.appendChild(img);
-			document.body.appendChild(div);
-
-			// do copy
-			SelectText(div);
-			document.execCommand('Copy');
-			document.body.removeChild(div);
-			
-			function SelectText(element) {
-				var doc = document;
-				if (doc.body.createTextRange) {
-					var range = document.body.createTextRange();
-					range.moveToElementText(element);
-					range.select();
-				} else if (window.getSelection) {
-					var selection = window.getSelection();
-					var range = document.createRange();
-					range.selectNodeContents(element);
-					selection.removeAllRanges();
-					selection.addRange(range);
-				}
-			}
-		</script>
     </body>
 </html>
