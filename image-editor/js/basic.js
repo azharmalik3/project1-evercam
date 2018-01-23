@@ -8,25 +8,19 @@ var $clipboard = $('#clipboard');
 
 $clipboard.on('click',function(e){
 	 
-	try {
-        var img = document.createElement('img');
-		img.src = imageEditor.toDataURL('image/jpeg', 0.1);
+	var img = document.createElement('img');
+	img.src = imageEditor.toDataURL('image/jpeg', 0.1);
 
-		var div1 = document.createElement('div');
-		div1.contentEditable = true;
-		div1.appendChild(img);
-		document.body.appendChild(div1);
+	var div1 = document.createElement('div');
+	div1.contentEditable = true;
+	div1.appendChild(img);
+	document.body.appendChild(div1);
 
-		//do copy
-		SelectText(div1);
-		document.execCommand('Copy', true);
-		document.body.removeChild(div1);
-		window.getSelection().removeAllRanges();
-    }
-    catch(err) {
-		console.log("Error: " + err + ".");
-        message.innerHTML = "Error: " + err + ".";
-    }
+	//do copy
+	SelectText(div1);
+	document.execCommand('Copy', true);
+	document.body.removeChild(div1);
+	window.getSelection().removeAllRanges();
 	
 });
 			
