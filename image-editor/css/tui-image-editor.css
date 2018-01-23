@@ -201,6 +201,10 @@
   text-decoration: none;
 }
 
+.mainmenu li {
+	float: left;
+}
+
 /* add hover behaviour */
 .mainmenu a:hover {
     background-color: #C5C5C5;
@@ -214,6 +218,7 @@
 
 .mainmenu li:hover .submenu {
   max-height: 400px;
+  display: inline;
 }
 
 /*
@@ -223,7 +228,7 @@
 
 .submenu a {
   background-color: #999;
-  width: 100px;
+  width: 30px;
 }
 
 /* hover behaviour for links inside .submenu */
