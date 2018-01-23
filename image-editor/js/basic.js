@@ -16,11 +16,15 @@ $clipboard.on('click',function(e){
 	div1.appendChild(img);
 	document.body.appendChild(div1);
 
-	//do copy
 	SelectText(div1);
-	document.execCommand('Copy', true);
+	try {
+		var successful = document.execCommand('copy');
+		var msg = successful ? 'successful' : 'unsuccessful';
+		console.log('Copying text command was ' + msg);
+	  } catch (err) {
+		console.log('Oops, unable to copy');
+	}
 	document.body.removeChild(div1);
-	window.getSelection().removeAllRanges();
 	
 });
 			
