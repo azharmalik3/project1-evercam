@@ -38,6 +38,7 @@ html, body {
 
 .mainmenu li:hover .submenu {
   max-height: 250px;
+  display: inline;
 }
 
 /*

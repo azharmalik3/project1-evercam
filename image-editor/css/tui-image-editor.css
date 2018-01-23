@@ -203,6 +203,7 @@
 
 .mainmenu li {
 	float: left;
+	display: inline;
 }
 
 /* add hover behaviour */
