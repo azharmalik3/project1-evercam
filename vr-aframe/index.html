@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <link type="text/css" href="css/style.css" rel="stylesheet">
+    <script src="js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	  <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div id="menu">
+      <ul class="mainmenu">
+				<li><a href='#' id="options">Options</a>
+					<ul class="submenu">
+						<li>
+							<a href="" class="buttons">
+								Add object
+							</a>
+						</li>
+						<li>
+							<a href="" class="buttons">
+								Add image
+							</a>
+						</li>
+						<li>
+							<a href="" class="buttons">
+								Add hostpost
+							</a>
+						</li>
+					<ul>
+				</li>
+			</ul>
+    </div>
+    <div id="content" style="z-index: -1">
+
+      <a-scene inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
+
+  		<a-assets>
+          <img id="city" crossorigin="anonymous" src="img/example.jpg">
+
+          <a-asset-item id="tree" src="assets/scene/scene.gltf"></a-asset-item>
+          <a-asset-item id="tree-obj" src="assets/floor/mi.obj"></a-asset-item>
+          <a-asset-item id="tree-mtl" src="assets/floor/mi.mtl"></a-asset-item>
+          <img id="homeThumbnail" src="../proyect1/img/logo.png">
+
+          <script id="link" type="text/html">
+            <a-entity class="link"
+              geometry="primitive: plane; height: 1; width: 1"
+              material="shader: flat; src: ${thumb}"
+              event-set__1="_event: mousedown; scale: 1 1 1"
+              event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+              event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+              event-set__4="_event: mouseleave; scale: 1 1 1"
+              set-image="on: click; target: #image-360; src: ${src}"
+              sound="on: click; src: #click-sound"></a-entity>
+          </script>
+        </a-assets>
+
+        <a-entity id="target">
+          <a-sky id="image-360" radius="10" src="#city"></a-sky>
+          <a-entity gltf-model="#tree" rotation="0 90 0" scale="0.01 0.01 0.01" position="3.21 -0.88 3.26"></a-entity>
+          <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl" position="-9.72 -1.04 0" scale="0.01 0.01 0.01" rotation="0 90 0"></a-entity>
+          <a-entity link="href: ../proyect1/index.php; title: My Homepage; image: #homeThumbnail" position="-1.28 2.25 8.69"></a-entity>
+        </a-entity>
+
+        <a-entity id="camera1" camera look-controls>
+  				<a-entity geometry="primitive:cone; radius-bottom:1; radius-top:0" scale=".33 1 .33" position="0 0 0" rotation="90 0 0" material="color: #0099ff; transparent: true; opacity:0.5"></a-entity>
+        </a-entity>
+          <!--<a-cursor id="cursor"
+            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+            event-set__1="_event: mouseenter; color: springgreen"
+            event-set__2="_event: mouseleave; color: black"
+            fuse="true"
+            raycaster="objects: .link"></a-cursor>-->
+
+
+        <!--<a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+        <a-sky color="#ECECEC"></a-sky>-->
+        </a-scene>
+    </div>
+  </body>
+</html>
