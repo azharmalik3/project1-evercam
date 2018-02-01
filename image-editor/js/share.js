@@ -3,14 +3,10 @@ $whatsapp.on('click',function(e){
 	bannerImage = document.getElementById('miimagen');
 	newData = convertCanvasToImage(bannerImage);
 	imgData = getBase64Image(newData);
-	localStorage.setItem("imgData", imgData);
-});
-
-function chargeImg() {
-	var dataImage = localStorage.getItem('imgData');
+  var dataImage = localStorage.getItem('imgData');
 	bannerImg = document.getElementById('myimgage');
 	bannerImg.src = 'data:image/png;base64,' + dataImage;
-}
+});
 
 /*var bannerImg;
 var bannerImage;
