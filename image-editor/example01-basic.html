@@ -68,15 +68,15 @@
                         </div>
                     </li>
                 </ul>
-								
+
             </div>
-			
+
             <div class="tui-image-editor" id="miimagen"></div>
         </br>
             <a href="#" class="button">Save</a>
             <a href="#" class="button2">Cancel</a>
 			<ul class="mainmenu">
-				<li><a href='#' class="buttons button3">Share</a>
+				<li><span class="buttons button3">Share</span>
 					<ul class="submenu">
 						<li>
 							<a href="http://twitter.com/share?url=https://project1-evercam.herokuapp.com/&text=This is a photo from evercam&via=rmtapita" target="_blank" class="buttons share-btn twitter">
@@ -84,7 +84,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="https://web.whatsapp.com/send?text=https://project1-evercam.herokuapp.com/" target="_blank" class="buttons share-btn whatsapp">
+							<a href="https://web.whatsapp.com/send?text=https://localhost/img.html" target="_blank" id ="whatsapp" class="buttons share-btn whatsapp">
 								<i class="fa fa-whatsapp"></i>
 							</a>
 						</li>
@@ -99,13 +99,13 @@
 							</a>
 						</li>
 						<li>
-							<a href="mailto:?body=https://project1-evercam.herokuapp.com/img/build.jpg" target="_blank" class="share-btn email buttons">
+							<a href="https://mail.google.com/mail/?view=cm&fs=1&to=email@domain.com&body=https://project1-evercam.herokuapp.com/img/build.jpg" target="_blank" class="share-btn email buttons">
 								<i class="fa fa-envelope"></i>
 							</a>
 						</li>
 						<li>
 							<a href="#" id="clipboard" class="share-btn copy buttons">
-								<i class="fa fa-clone"></i>
+								<span>Copy URL</span>
 							</a>
 						</li>
 					<ul>
@@ -115,9 +115,10 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.7/fabric.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
-		<script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
-		<script src="bower_components/tui-color-picker/dist/tui-color-picker.js"></script>
+    		<script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
+    		<script src="bower_components/tui-color-picker/dist/tui-color-picker.js"></script>
         <script type="text/javascript" src="js/tui-image-editor.js"></script>
         <script src="js/basic.js"></script>
+        <script src="js/share.js"></script>
     </body>
 </html>

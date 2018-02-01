@@ -7,7 +7,7 @@
 var $clipboard = $('#clipboard');
 
 $clipboard.on('click',function(e){
-	 
+
 	var img = document.createElement('img');
 	img.src = imageEditor.toDataURL('image/jpeg', 0.1);
 
@@ -25,9 +25,9 @@ $clipboard.on('click',function(e){
 		console.log('Oops, unable to copy');
 	}
 	document.body.removeChild(div1);
-	
+
 });
-			
+
 function SelectText(element) {
 	var doc = document;
 	if (doc.body.createTextRange) {
