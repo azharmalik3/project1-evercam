@@ -8,15 +8,15 @@
 		<meta property="og:image" content="https://project1-evercam.herokuapp.com/img/logo.png">
 		<meta property="og:type" content="website" />
 	</head>
-	<body onload="myfunction()">
+	<body onload="myfunction2()">
 		<a href="https://project1-evercam.herokuapp.com/img/build.jpg" download>
 		  <img id="myimage" border="0" src="" width="100%" height="100%">
 		</a>
 		<script>
-		function myfunction() {
-			var url = Cookies.get('name');
-			var img1 document.getElementById('myimage').src = "url";
-		}
+			function myfunction2() {
+				var url = Cookies.get('name');
+				document.getElementById('myimage').src = url;
+			}
 		</script>
 		<script src="js/share.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
