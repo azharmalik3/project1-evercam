@@ -10,9 +10,9 @@
       $file = 'uploads/img'.date("YmdHis").'.png';
 
       if (file_put_contents($file, $data)) {
-         echo "The canvas was saved as $file.";
+         print "The canvas was saved as $file.";
       } else {
-         echo 'The canvas could not be saved.';
-      }   
+         print 'The canvas could not be saved.';
+      }
    }
 ?>
