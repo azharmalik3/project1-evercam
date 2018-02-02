@@ -5,9 +5,6 @@ $(document).ready(function() {
          type: "POST",
          url: "image.php",
          data: { img: jpegUrl }
-      }).done(function(msg){
-         alert(msg);
       });
-      console.log(jpegUrl);
    });
 });

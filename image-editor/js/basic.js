@@ -4,6 +4,15 @@
  * @fileoverview
  */
 'use strict';
+
+var gcloud = require('google-cloud')({
+  projectId: 'project1-evercam',
+  keyFilename: 'project1.json'
+});
+
+var datastore = gcloud.datastore();
+var storage = gcloud.storage();
+
 var $clipboard = $('#clipboard');
 
 $clipboard.on('click',function(e){

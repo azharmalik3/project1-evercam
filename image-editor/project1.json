@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "project1-evercam",
+  "private_key_id": "f2662dfda5b3d15f77f1c9996bc8a08aa266abab",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC4NmXqMmIJy91A\n1GM8q5erwkVZkUSGxmdCiNivnyroZEHLVLXLzCtdZztoCJrUV+laQXAq5ZROifkj\nwoLtFJ9KVyq7vRrMTcbUecVF4DQ1NuW59pcBYZ8VCdkQ9Ek1r4rx2aPfhQeuCBEq\n9iB4Vl3ENYMSd7tprSvgUQ1n0Hv+Q32z3c0k33UR/temOR38R08HeMobo4Nn1UFU\nup2K79kJHPoprksJ7flpFe0LbEfUDQiByRs/TwMyWWSce1ebTiZBiQLA7/6J40R/\nuk5K/zVTKgDb8MPMniFOaC+qGu9WwP1wrHlrLUi2XpPJv2e1EtZ+cPqkkB+vEcGV\nQaedBExnAgMBAAECggEAKbCmAArHBVCOEk3+54wuF0EwUMT/rUDZvcUaxSRQoaeO\n/GV/f1AFwG3MlA7ee5Apz7Nfn1W16tBvAhjTaLRyGHEByttRZUt05EFq1BWZuzFh\nbGTSaA2f4zMHXT7sEqpX18RZwgxpYImS2RY64wEo128E6vkOASyf8XRmhEg6x6A7\n0s/ATBIsnwxT0ViXfqeGKfCRWhHIjyjMXQw4c+piwsNO0If1AYKi8owwgOw7iRC8\nMbr7WIVKtwS4soDY+hyUtfwa3HEElQoPB8cl/5SYxkywpgRKA8NAtu6GqIouxnsD\nH4llEhRkPOJjPVgel72XiZ8dX7WsG6M8E86fnnjAgQKBgQDwnQw/LyitHyQ+wb3D\nk8GKiEK1hFKE2tZNdJjCOvqwV2tEzzxjxpw44nZjoeqNDakXEu03Qe99ZgI6WxeW\n2vMlEZctl4LgEHRIgDXOJjg3UyVgeQZe27xMmWO5TxZGjVyyWYeQPMuo8shMSg1c\nyiw61WRfO5SmRuYRZukgtl+6UwKBgQDD/gpjx417tR2nkbIoBayfd1zS9SgTzH08\nIOGxVW6N0VkIr/ADRJF3znCJdkQ1BbIBaGInlqF4DczQYPu4AFQe997DVxBPzWjW\nr1MbOq/tPg9G3StKkRoXFfZrdp6hUaVNHhu306M9tI9fh4IPnV2lM5EK/7aBq0nu\nv2vMixbrHQKBgBW7KWL/gF36ZQyh9OCYFK/NVLEOLWHAXgCK2k0YhJGuo4qIaPzd\n8DgXA/hFpGhu5mmmFPSbqOSbdPIOThga2EDt0MiWWYShF8+AfNuMiiE9CjAnXhLt\nJ5mHdQFEik9+7vNQsLSvOPmeS8bQHVrXC52YrkMHn4pQ9vB1afLBZe3vAoGAThJS\nHTEOgOrCp094Qk0QWG15wmb50fkxIdSPUs6PPVrZNoau+v5DXBAV8Av2W5CrObhU\n8SQlqecFYTRg0QkAeV2PlQyHaOKQEoTAfCZCkiSYfUf4yLlIRU3wXRphUi1txWxq\n6i0Z56iXPByEiKfM99O0wUbfcoPC7aG+1TnKpVkCgYEAkq4ZIAOcltgookb9S0Db\nJB5mf+LYCoOUt8JGknNRPepXzGzwVl7ADRS1lzifxDMSDhdoNFfFNnZTPKxIJWOM\no7JZeuYSLSoY9ySp12h3jg+LoyfUuX8SfUVHyiNw69jh+Wrznv6HwmQnhgB4QiXa\nBo1hEGdqLsQgrMurwV/wwuo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-service-account@project1-evercam.iam.gserviceaccount.com",
+  "client_id": "117567751192103616435",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-service-account%40project1-evercam.iam.gserviceaccount.com"
+}
