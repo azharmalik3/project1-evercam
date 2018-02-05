@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Imagen</title>
-		<meta name="description" content="Evercam timelapse constructions cameras">
 		<meta charset="UTF-8">
-		<meta property="og:description" content="Evercam timelapse constructions cameras">
-		<meta property="og:image" content="https://github.com/JaviCT/project1-evercam/blob/master/img/build.jpg">
-		<meta property="og:type" content="website" />
-		<script src="js/share.js"></script>
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+		<meta name="viewport" content="width=device-width; height=device-height;"></meta>
+		<link rel="stylesheet" href="resource://content-accesible/ImageDocument.css"><link>
+		<link rel="stylesheet" href="resource://content-accesible/TopLevelImageDocument.css"></link>
+		<link rel "stylesheet" href="chrome://global/skin/media/TopLevelImageDocument.css"></link>
+		<title>ImageEditor</title>
 	</head>
-	<body onload="myfunction2()">
-		<a href="https://project1-evercam.herokuapp.com/img/build.jpg" download>
-		  <img id="myimage" border="0" src="" width="100%" height="100%">
-		</a>
-		<script>
-			function myfunction2() {
-				var url = Cookies.get('name');
-				document.getElementById('myimage').src = url;
-			}
-		</script>
-
+	<body>
+		<img class="shrinkToFit" src="http://localhost:8085/proyect1/image-editor/img/sampleimage.jpg" alt="http://localhost:8085/proyect1/image-editor/img/sampleimage.jpg" width="100%" height="100%"></img>
 	</body>
 </html>

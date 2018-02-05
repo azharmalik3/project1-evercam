@@ -5,19 +5,79 @@
  */
 'use strict';
 
-var gcloud = require('google-cloud')({
+/*var gcloud = require('google-cloud')({
   projectId: 'project1-evercam',
   keyFilename: 'project1.json'
 });
 
 var datastore = gcloud.datastore();
-var storage = gcloud.storage();
+var storage = gcloud.storage();*/
 
 var $clipboard = $('#clipboard');
+var $mylinkId = $('#mylinkId');
+var $whatsapp2 = $('#whatsapp');
+
+$whatsapp2.on('click', function(e){
+  var url = "https://project1-evercam.herokuapp.com/image-editor/img/sampleimage.jpg";
+  getShortUrl(url);
+  var check = function(){
+    if(shortUrl == null || shortUrl == undefined ){
+      getShortUrl(url);
+      console.log(shortUrl);
+      setTimeout(check, 1000);
+    }
+    else {
+      window.open("https://web.whatsapp.com/send?text=" + shortUrl, "_blank");
+    }
+  }
+  check();
+});
+
+$mylinkId.on('click', function(e){
+  var url = "https://project1-evercam.herokuapp.com/image-editor/img/sampleimage.jpg";
+  getShortUrl(url);
+  var check = function(){
+    if(shortUrl == null || shortUrl == undefined ){
+      getShortUrl(url);
+      console.log(shortUrl);
+      setTimeout(check, 1000);
+    }
+    else {
+      window.open("https://mail.google.com/mail/?view=cm&fs=1&to=javier@evercam.io&body=" + shortUrl, "_blank");
+    }
+  }
+  check();
+});
+
+var shortUrl= null;
+
+function miFuncion(returnValue){
+   shortUrl = returnValue;
+}
+
+function getShortUrl(url, callback){
+   var accessToken = '2ccb88a02480e9f5c5a0c934b6d1a9f937e8cd58';
+   var url = 'https://api-ssl.bitly.com/v3/shorten?access_token=' + accessToken + '&longUrl=' + encodeURIComponent(url);
+   $.getJSON(
+       url,
+       {},
+       function(response)
+       {
+           if(callback){
+               callback(response.data.url);
+             }
+               console.log(response.data.url);
+               miFuncion(response.data.url);
+       }
+   );
+}
 
 $clipboard.on('click',function(e){
+    copyImg();
+});
 
-	var img = document.createElement('img');
+function copyImg(){
+  var img = document.createElement('img');
 	img.src = imageEditor.toDataURL('image/jpeg', 0.1);
 
 	var div1 = document.createElement('div');
@@ -34,8 +94,7 @@ $clipboard.on('click',function(e){
 		console.log('Oops, unable to copy');
 	}
 	document.body.removeChild(div1);
-
-});
+}
 
 function SelectText(element) {
 	var doc = document;
