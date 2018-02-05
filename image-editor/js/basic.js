@@ -13,6 +13,21 @@
 var datastore = gcloud.datastore();
 var storage = gcloud.storage();*/
 
+var weedClient = require("node-seaweedfs");
+
+var seaweedfs     = new weedClient({
+	server:		"localhost",
+	port:		9333
+});
+
+seaweedfs.write("./file.png").then(function(fileInfo) {
+    return seaweedfs.read(fileInfo.fid);
+}).then(function(Buffer) {
+    //do something with the buffer
+}).catch(function(err) {
+    //error handling
+});
+
 var $clipboard = $('#clipboard');
 var $mylinkId = $('#mylinkId');
 var $whatsapp2 = $('#whatsapp');
