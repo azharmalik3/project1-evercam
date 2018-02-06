@@ -13,12 +13,27 @@
 var datastore = gcloud.datastore();
 var storage = gcloud.storage();*/
 
+function processAjaxData(response, urlPath){
+     document.getElementById("content").innerHTML = response.html;
+     document.title = response.pageTitle;
+     window.history.pushState({"html":response.html,"pageTitle":response.pageTitle},"", urlPath);
+ }
+
+ function ChangeUrl(title, url) {
+   if (typeof (history.pushState) != "undefined") {
+       var obj = { Title: title, Url: url };
+       history.pushState(obj, obj.Title, obj.Url);
+   } else {
+       alert("Browser does not support HTML5.");
+   }
+}
+
 var $clipboard = $('#clipboard');
 var $mylinkId = $('#mylinkId');
 var $whatsapp2 = $('#whatsapp');
 
 $whatsapp2.on('click', function(e){
-  var url = "https://project1-evercam.herokuapp.com/image-editor/img/sampleimage.jpg";
+  var url = "http://http://localhost:8085/proyect1/image-editor/img/sampleimage.jpg";
   getShortUrl(url);
   var check = function(){
     if(shortUrl == null || shortUrl == undefined ){
