@@ -143,8 +143,7 @@ $whatsapp2.on('click', function(e){
 
     if(response.id != null)
     {
-      var str ="<b>Long URL:</b>"+longUrl+"<br>";
-      str +="<b>Short URL:</b> <a href='"+response.id+"'>"+response.id+"</a><br>";
+      var str = response.id;
       window.open("https://web.whatsapp.com/send?text=" + str, "_blank");
     }
     else
