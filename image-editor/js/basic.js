@@ -46,6 +46,7 @@ seaweedfs.write("./file.png").then(function(fileInfo) {
 
 
 var $clipboard = $('#clipboard');
+var $clipboardUrl = $('#clipboardUrl');
 var $mylinkId = $('#mylinkId');
 var $whatsapp2 = $('#whatsapp');
 
@@ -103,6 +104,10 @@ function getShortUrl(url, callback){
        }
    );
 }
+
+$clipboardUrl.on('click0', function(e){
+  copyImg();
+});
 
 $clipboard.on('click',function(e){
     copyImg();
