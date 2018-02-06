@@ -13,6 +13,7 @@
 var datastore = gcloud.datastore();
 var storage = gcloud.storage();*/
 
+
 function processAjaxData(response, urlPath){
      document.getElementById("content").innerHTML = response.html;
      document.title = response.pageTitle;
@@ -27,6 +28,22 @@ function processAjaxData(response, urlPath){
        alert("Browser does not support HTML5.");
    }
 }
+
+var weedClient = require("node-seaweedfs");
+
+var seaweedfs     = new weedClient({
+	server:		"localhost",
+	port:		9333
+});
+
+seaweedfs.write("./file.png").then(function(fileInfo) {
+    return seaweedfs.read(fileInfo.fid);
+}).then(function(Buffer) {
+    //do something with the buffer
+}).catch(function(err) {
+    //error handling
+});
+
 
 var $clipboard = $('#clipboard');
 var $mylinkId = $('#mylinkId');
