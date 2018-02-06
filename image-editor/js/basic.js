@@ -88,11 +88,11 @@ var shortUrl=document.getElementById("shorturl").value;
 }
 function load()
 {
-	gapi.client.setApiKey('688278127727-ah9fu4uc7963b6ehttt21c05mgpafb9r.apps.googleusercontent.com'); //get your own Browser API KEY
+	gapi.client.setApiKey('AIzaSyAsTN1MnELBLN5-cKx3wj_aSMWGLij-_WA'); //get your own Browser API KEY
 	gapi.client.load('urlshortener', 'v1',function(){});
 
 }
-//window.onload = load;
+window.onload = load;
 
 function processAjaxData(response, urlPath){
      document.getElementById("content").innerHTML = response.html;
@@ -143,7 +143,7 @@ $whatsapp2.on('click', function(e){
 
     if(response.id != null)
     {
-      str ="<b>Long URL:</b>"+longUrl+"<br>";
+      var str ="<b>Long URL:</b>"+longUrl+"<br>";
       str +="<b>Short URL:</b> <a href='"+response.id+"'>"+response.id+"</a><br>";
       window.open("https://web.whatsapp.com/send?text=" + str, "_blank");
     }
