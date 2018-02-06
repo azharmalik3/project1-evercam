@@ -5,14 +5,94 @@
  */
 'use strict';
 
-/*var gcloud = require('google-cloud')({
-  projectId: 'project1-evercam',
-  keyFilename: 'project1.json'
-});
+function start() {
+        // Initializes the client with the API key and the Translate API.
+        gapi.client.init({
+          'apiKey': 'YOUR_API_KEY',
+          'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/translate/v2/rest'],
+        }).then(function() {
+          // Executes an API request, and returns a Promise.
+          // The method name `language.translations.list` comes from the API discovery.
+          return gapi.client.language.translations.list({
+            q: 'hello world',
+            source: 'en',
+            target: 'de',
+          });
+        }).then(function(response) {
+          console.log(response.result.data.translations[0].translatedText);
+        }, function(reason) {
+          console.log('Error: ' + reason.result.error.message);
+        });
+      };
 
-var datastore = gcloud.datastore();
-var storage = gcloud.storage();*/
+      // Loads the JavaScript client library and invokes `start` afterwards.
+      //gapi.load('client', start);
 
+
+/*window.onLoadCallback = function(){
+  gapi.auth2.init({
+      client_id: '688278127727-ah9fu4uc7963b6ehttt21c05mgpafb9r.apps.googleusercontent.com'
+    });
+}*/
+
+function makeShort()
+{
+  var longUrl="https://project1-evercam.herokuapp.com/image-editor/img/img.html"
+   //var longUrl=document.getElementById("longurl").value;
+    var request = gapi.client.urlshortener.url.insert({
+    'resource': {
+      'longUrl': longUrl
+	}
+    });
+    request.execute(function(response)
+	{
+
+		if(response.id != null)
+		{
+			str ="<b>Long URL:</b>"+longUrl+"<br>";
+			str +="<b>Short URL:</b> <a href='"+response.id+"'>"+response.id+"</a><br>";
+			document.getElementById("output").innerHTML = str;
+		}
+		else
+		{
+			alert("error: creating short url");
+		}
+
+    });
+ }
+
+function getShortInfo()
+{
+var shortUrl=document.getElementById("shorturl").value;
+
+    var request = gapi.client.urlshortener.url.get({
+      'shortUrl': shortUrl,
+	'projection':'FULL'
+    });
+    request.execute(function(response)
+	{
+
+		if(response.longUrl!= null)
+		{
+			str ="<b>Long URL:</b>"+response.longUrl+"<br>";
+			str +="<b>Create On:</b>"+response.created+"<br>";
+			document.getElementById("output").innerHTML = str;
+		}
+		else
+		{
+			alert("error: unable to get URL information");
+		}
+
+    });
+
+}
+function load()
+{
+	gapi.client.setApiKey('688278127727-ah9fu4uc7963b6ehttt21c05mgpafb9r.apps.googleusercontent.com'); //get your own Browser API KEY
+	gapi.client.load('urlshortener', 'v1',function(){});
+
+}
+//window.onload = load;
 
 function processAjaxData(response, urlPath){
      document.getElementById("content").innerHTML = response.html;
@@ -51,19 +131,28 @@ var $mylinkId = $('#mylinkId');
 var $whatsapp2 = $('#whatsapp');
 
 $whatsapp2.on('click', function(e){
-  var url = "https://project1-evercam.herokuapp.com/image-editor/img/img.html";
-  getShortUrl(url);
-  var check = function(){
-    if(shortUrl == null || shortUrl == undefined ){
-      getShortUrl(url);
-      console.log(shortUrl);
-      setTimeout(check, 1000);
-    }
-    else {
-      window.open("https://web.whatsapp.com/send?text=" + shortUrl, "_blank");
-    }
+  var longUrl="https://project1-evercam.herokuapp.com/image-editor/img/img.html";
+   //var longUrl=document.getElementById("longurl").value;
+    var request = gapi.client.urlshortener.url.insert({
+    'resource': {
+      'longUrl': longUrl
   }
-  check();
+    });
+    request.execute(function(response)
+  {
+
+    if(response.id != null)
+    {
+      str ="<b>Long URL:</b>"+longUrl+"<br>";
+      str +="<b>Short URL:</b> <a href='"+response.id+"'>"+response.id+"</a><br>";
+      window.open("https://web.whatsapp.com/send?text=" + str, "_blank");
+    }
+    else
+    {
+      alert("error: creating short url");
+    }
+
+    });
 });
 
 $mylinkId.on('click', function(e){
