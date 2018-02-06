@@ -51,7 +51,7 @@ var $mylinkId = $('#mylinkId');
 var $whatsapp2 = $('#whatsapp');
 
 $whatsapp2.on('click', function(e){
-  var url = "https://project1-evercam.herokuapp.com/image-editor/img.html";
+  var url = "https://project1-evercam.herokuapp.com/image-editor/img/img.html";
   getShortUrl(url);
   var check = function(){
     if(shortUrl == null || shortUrl == undefined ){
