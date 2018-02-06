@@ -5,95 +5,6 @@
  */
 'use strict';
 
-function start() {
-        // Initializes the client with the API key and the Translate API.
-        gapi.client.init({
-          'apiKey': 'YOUR_API_KEY',
-          'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/translate/v2/rest'],
-        }).then(function() {
-          // Executes an API request, and returns a Promise.
-          // The method name `language.translations.list` comes from the API discovery.
-          return gapi.client.language.translations.list({
-            q: 'hello world',
-            source: 'en',
-            target: 'de',
-          });
-        }).then(function(response) {
-          console.log(response.result.data.translations[0].translatedText);
-        }, function(reason) {
-          console.log('Error: ' + reason.result.error.message);
-        });
-      };
-
-      // Loads the JavaScript client library and invokes `start` afterwards.
-      //gapi.load('client', start);
-
-
-/*window.onLoadCallback = function(){
-  gapi.auth2.init({
-      client_id: '688278127727-ah9fu4uc7963b6ehttt21c05mgpafb9r.apps.googleusercontent.com'
-    });
-}*/
-
-function makeShort()
-{
-  var longUrl="https://project1-evercam.herokuapp.com/image-editor/img/img.html"
-   //var longUrl=document.getElementById("longurl").value;
-    var request = gapi.client.urlshortener.url.insert({
-    'resource': {
-      'longUrl': longUrl
-	}
-    });
-    request.execute(function(response)
-	{
-
-		if(response.id != null)
-		{
-			str ="<b>Long URL:</b>"+longUrl+"<br>";
-			str +="<b>Short URL:</b> <a href='"+response.id+"'>"+response.id+"</a><br>";
-			document.getElementById("output").innerHTML = str;
-		}
-		else
-		{
-			alert("error: creating short url");
-		}
-
-    });
- }
-
-function getShortInfo()
-{
-var shortUrl=document.getElementById("shorturl").value;
-
-    var request = gapi.client.urlshortener.url.get({
-      'shortUrl': shortUrl,
-	'projection':'FULL'
-    });
-    request.execute(function(response)
-	{
-
-		if(response.longUrl!= null)
-		{
-			str ="<b>Long URL:</b>"+response.longUrl+"<br>";
-			str +="<b>Create On:</b>"+response.created+"<br>";
-			document.getElementById("output").innerHTML = str;
-		}
-		else
-		{
-			alert("error: unable to get URL information");
-		}
-
-    });
-
-}
-function load()
-{
-	gapi.client.setApiKey('AIzaSyAsTN1MnELBLN5-cKx3wj_aSMWGLij-_WA'); //get your own Browser API KEY
-	gapi.client.load('urlshortener', 'v1',function(){});
-
-}
-window.onload = load;
-
 function processAjaxData(response, urlPath){
      document.getElementById("content").innerHTML = response.html;
      document.title = response.pageTitle;
@@ -130,75 +41,52 @@ var $clipboardUrl = $('#clipboardUrl');
 var $mylinkId = $('#mylinkId');
 var $whatsapp2 = $('#whatsapp');
 
+function load() {
+	gapi.client.setApiKey('AIzaSyAsTN1MnELBLN5-cKx3wj_aSMWGLij-_WA'); //get your own Browser API KEY
+	gapi.client.load('urlshortener', 'v1',function(){});
+}
+window.onload = load;
+
 $whatsapp2.on('click', function(e){
   var longUrl="https://project1-evercam.herokuapp.com/image-editor/img/img.html";
-   //var longUrl=document.getElementById("longurl").value;
-    var request = gapi.client.urlshortener.url.insert({
+  var request = gapi.client.urlshortener.url.insert({
     'resource': {
       'longUrl': longUrl
-  }
-    });
-    request.execute(function(response)
-  {
-
-    if(response.id != null)
-    {
+    }
+  });
+  request.execute(function(response){
+    if(response.id != null){
       var str = response.id;
       window.open("https://web.whatsapp.com/send?text=" + str, "_blank");
-    }
-    else
-    {
+    } else {
       alert("error: creating short url");
     }
-
-    });
+  });
 });
 
 $mylinkId.on('click', function(e){
-  var url = "https://project1-evercam.herokuapp.com/image-editor/img.html";
-  getShortUrl(url);
-  var check = function(){
-    if(shortUrl == null || shortUrl == undefined ){
-      getShortUrl(url);
-      console.log(shortUrl);
-      setTimeout(check, 1000);
+  var longUrl="https://project1-evercam.herokuapp.com/image-editor/img/img.html";
+  var request = gapi.client.urlshortener.url.insert({
+    'resource': {
+      'longUrl': longUrl
     }
-    else {
-      window.open("https://mail.google.com/mail/?view=cm&fs=1&to=javier@evercam.io&body=" + shortUrl, "_blank");
+  });
+  request.execute(function(response){
+    if(response.id != null){
+      var str = response.id;
+      window.open("https://mail.google.com/mail/?view=cm&fs=1&to=javier@evercam.io&body=" + str, "_blank");
+    } else{
+      alert("error: creating short url");
     }
-  }
-  check();
+  });
 });
-
-var shortUrl= null;
-
-function miFuncion(returnValue){
-   shortUrl = returnValue;
-}
-
-function getShortUrl(url, callback){
-   var accessToken = '2ccb88a02480e9f5c5a0c934b6d1a9f937e8cd58';
-   var url = 'https://api-ssl.bitly.com/v3/shorten?access_token=' + accessToken + '&longUrl=' + encodeURIComponent(url);
-   $.getJSON(
-       url,
-       {},
-       function(response)
-       {
-           if(callback){
-               callback(response.data.url);
-             }
-               console.log(response.data.url);
-               miFuncion(response.data.url);
-       }
-   );
-}
 
 $clipboardUrl.on('click0', function(e){
   copyImg();
 });
 
 $clipboard.on('click',function(e){
-    copyImg();
+  copyImg();
 });
 
 function copyImg(){
