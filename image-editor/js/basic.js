@@ -29,7 +29,7 @@ function processAjaxData(response, urlPath){
    }
 }
 
-var weedClient = require("node-seaweedfs");
+/*var weedClient = require("node-seaweedfs");
 
 var seaweedfs     = new weedClient({
 	server:		"localhost",
@@ -42,7 +42,7 @@ seaweedfs.write("./file.png").then(function(fileInfo) {
     //do something with the buffer
 }).catch(function(err) {
     //error handling
-});
+});*/
 
 
 var $clipboard = $('#clipboard');
