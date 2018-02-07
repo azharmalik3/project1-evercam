@@ -81,13 +81,33 @@ $mylinkId.on('click', function(e){
   });
 });
 
-$clipboardUrl.on('click0', function(e){
-  copyImg();
+$clipboardUrl.on('click', function(e){
+  copyUrl();
 });
 
 $clipboard.on('click',function(e){
   copyImg();
 });
+
+function copyUrl(){
+  var url = document.createElement('p');
+	url.innerHTML = "https://project1-evercam.herokuapp.com/image-editor/img/img.html";
+
+	var div1 = document.createElement('div');
+	div1.contentEditable = true;
+	div1.appendChild(url);
+	document.body.appendChild(div1);
+
+	SelectText(div1);
+	try {
+		var successful = document.execCommand('copy');
+		var msg = successful ? 'successful' : 'unsuccessful';
+		console.log('Copying text command was ' + msg);
+	  } catch (err) {
+		console.log('Oops, unable to copy');
+	}
+	document.body.removeChild(div1);
+}
 
 function copyImg(){
   var img = document.createElement('img');
