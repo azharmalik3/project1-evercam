@@ -35,7 +35,6 @@ seaweedfs.write("./file.png").then(function(fileInfo) {
     //error handling
 });*/
 
-
 var $clipboard = $('#clipboard');
 var $clipboardUrl = $('#clipboardUrl');
 var $mylinkId = $('#mylinkId');
@@ -648,20 +647,25 @@ instanceArrow.on('selectColor', function(event) {
 });
 
 // Load sample image
-var url_string = window.location.href;
-var url = new URL(url_string);
-var c = url.searchParams.get("c");
+var urlParams = new URLSearchParams(window.location.search);
+var c = urlParams.get('url');
+console.log(urlParams);
 console.log(c);
+
 if (c == null){
-  imageEditor.loadImageFromURL("img/sampleimage.jpg", 'SampleImage').then(sizeValue => {
-      console.log(sizeValue);
-      imageEditor.clearUndoStack();
+    imageEditor.loadImageFromURL("img/sampleimage.jpg", 'SampleImage').then(sizeValue => {
+    console.log(sizeValue);
+    imageEditor.clearUndoStack();
   });
 } else{
-  imageEditor.loadImageFromURL(c, 'SampleImage').then(sizeValue => {
-      console.log(sizeValue);
-      imageEditor.clearUndoStack();
-  });
+  var canvas = document.getElementsByClassName("upper-canvas");
+  var ctx = canvas[0].getContext("2d");
+
+  var image = new Image();
+  image.onload = function() {
+    ctx.drawImage(image, 0, 0);
+  };
+  image.src = c;
 }
 
 
