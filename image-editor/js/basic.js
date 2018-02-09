@@ -40,12 +40,30 @@ var $clipboard = $('#clipboard');
 var $clipboardUrl = $('#clipboardUrl');
 var $mylinkId = $('#mylinkId');
 var $whatsapp2 = $('#whatsapp');
+var $twitter = $('#twitter');
 
 function load() {
 	gapi.client.setApiKey('AIzaSyAsTN1MnELBLN5-cKx3wj_aSMWGLij-_WA'); //get your own Browser API KEY
 	gapi.client.load('urlshortener', 'v1',function(){});
 }
 window.onload = load;
+
+$twitter.on('click', function(){
+  var longUrl="https://project1-evercam.herokuapp.com/image-editor/img/img.html";
+  var request = gapi.client.urlshortener.url.insert({
+    'resource': {
+      'longUrl': longUrl
+    }
+  });
+  request.execute(function(response){
+    if(response.id != null){
+      var str = response.id;
+      window.open("http://twitter.com/share?url=" + str + "&text=This is a photo from evercam&via=rmtapita", "_blank");
+    } else {
+      alert("error: creating short url");
+    }
+  });
+});
 
 $whatsapp2.on('click', function(e){
   var longUrl="https://project1-evercam.herokuapp.com/image-editor/img/img.html";
@@ -74,7 +92,7 @@ $mylinkId.on('click', function(e){
   request.execute(function(response){
     if(response.id != null){
       var str = response.id;
-      window.open("https://mail.google.com/mail/?view=cm&fs=1&to=javier@evercam.io&body=" + str, "_blank");
+      window.open("https://mail.google.com/mail/?view=cm&fs=1&to=javier@evercam.io&body=Click on the following link to open the photo: \n" + str, "_blank");
     } else{
       alert("error: creating short url");
     }
@@ -630,10 +648,21 @@ instanceArrow.on('selectColor', function(event) {
 });
 
 // Load sample image
-imageEditor.loadImageFromURL('img/sampleimage.jpg', 'SampleImage').then(sizeValue => {
-    console.log(sizeValue);
-    imageEditor.clearUndoStack();
-});
+var url_string = "window.location.href";
+var url = new URL(url_string);
+var c = url.searchParams.get("c");
+if (c == null){
+  imageEditor.loadImageFromURL("img/sampleimag.jpg", 'SampleImage').then(sizeValue => {
+      console.log(sizeValue);
+      imageEditor.clearUndoStack();
+  });
+} else{
+  imageEditor.loadImageFromURL(c, 'SampleImage').then(sizeValue => {
+      console.log(sizeValue);
+      imageEditor.clearUndoStack();
+  });
+}
+
 
 // IE9 Unselectable
 $('.menu').on('selectstart', function() {
