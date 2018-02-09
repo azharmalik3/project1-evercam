@@ -648,11 +648,12 @@ instanceArrow.on('selectColor', function(event) {
 });
 
 // Load sample image
-var url_string = "window.location.href";
+var url_string = window.location.href;
 var url = new URL(url_string);
 var c = url.searchParams.get("c");
+console.log(c);
 if (c == null){
-  imageEditor.loadImageFromURL("img/sampleimag.jpg", 'SampleImage').then(sizeValue => {
+  imageEditor.loadImageFromURL("img/sampleimage.jpg", 'SampleImage').then(sizeValue => {
       console.log(sizeValue);
       imageEditor.clearUndoStack();
   });
