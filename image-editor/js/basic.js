@@ -647,26 +647,30 @@ instanceArrow.on('selectColor', function(event) {
 });
 
 // Load sample image
-var urlParams = new URLSearchParams(window.location.search);
-var c = urlParams.get('url');
-console.log(urlParams);
-console.log(c);
+  var urlParams = new URLSearchParams(window.location.search);
+  var c = urlParams.get('url');
+  console.log(c);
 
-if (c == null){
-    imageEditor.loadImageFromURL("img/sampleimage.jpg", 'SampleImage').then(sizeValue => {
-    console.log(sizeValue);
-    imageEditor.clearUndoStack();
-  });
-} else{
-  var canvas = document.getElementsByClassName("upper-canvas");
-  var ctx = canvas[0].getContext("2d");
+  if (c == null){
+      imageEditor.loadImageFromURL("img/sampleimage.jpg", 'SampleImage').then(sizeValue => {
+        console.log(sizeValue);
+        imageEditor.clearUndoStack();
+      });
+  } else{
+    /*var canvas = document.getElementsByClassName("canvas");
+    var ctx = canvas[0].getContext("2d");*/
 
-  var image = new Image();
-  image.onload = function() {
-    ctx.drawImage(image, 0, 0);
-  };
-  image.src = c;
-}
+    var image = new Image();
+    image.src = c;
+    /*image.onload = function() {
+      ctx.drawImage(image, 0, 0);
+    };*/
+    image.src = c;
+    imageEditor.setCanvasImage('SampleImage', image).then(sizeValue => {
+      console.log(sizeValue);
+      imageEditor.clearUndoStack();
+    });
+  }
 
 
 // IE9 Unselectable

@@ -659,6 +659,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	         */
 
 	    }, {
+	        key: 'loadImageFromBase',
+	        value: function loadImageFromBase(url, imageName) {
+	            if (!imageName || !url) {
+	                return Promise.reject(rejectMessages.invalidParameters);
+	            }
+
+	            return this.execute(commands.LOAD_IMAGE, imageName, url);
+	        }
+
+	        /**
+	         * Add image object on canvas
+	         * @param {string} imgUrl - Image url to make object
+	         * @returns {Promise<ObjectProps, ErrorMsg>}
+	         * @example
+	         * imageEditor.addImageObject('path/fileName.jpg').then(objectProps => {
+	         *     console.log(ojectProps.id);
+	         * });
+	         */
+
+	    }, {
 	        key: 'addImageObject',
 	        value: function addImageObject(imgUrl) {
 	            if (!imgUrl) {
@@ -1975,7 +1995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 5 */
 /***/ (function(module, exports) {
 
-	
+
 
 /***/ }),
 /* 6 */
@@ -2186,7 +2206,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	$export.B = 16;  // bind
 	$export.W = 32;  // wrap
 	$export.U = 64;  // safe
-	$export.R = 128; // real proto method for `library` 
+	$export.R = 128; // real proto method for `library`
 	module.exports = $export;
 
 /***/ }),

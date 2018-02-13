@@ -3,9 +3,10 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <link type="text/css" href="css/style.css" rel="stylesheet">
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="module" src="js/index.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	  <meta charset="utf-8"/>
+    <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.14/dist/aframe-orbit-controls-component.min.js"></script>
+    <meta charset="utf-8"/>
   </head>
   <body>
     <div id="menu">
@@ -18,7 +19,7 @@
 							</a>
 						</li>
 						<li>
-							<a if="btn-object" class="buttons">
+							<a if="btn-pano" class="buttons">
 								Add image
 							</a>
 						</li>
@@ -33,7 +34,7 @@
     </div>
     <div id="content" style="z-index: -1">
 
-      <a-scene inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
+      <a-scene id="content" inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
 
   		<a-assets id ="myAsset">
           <img id="city" crossorigin="anonymous" src="img/example.jpg">
@@ -41,7 +42,7 @@
           <a-asset-item id="tree" src="assets/scene/scene.gltf"></a-asset-item>
           <a-asset-item id="tree-obj" src="assets/floor/mi.obj"></a-asset-item>
           <a-asset-item id="tree-mtl" src="assets/floor/mi.mtl"></a-asset-item>
-          <img id="homeThumbnail" src="../proyect1/img/logo.png">
+          <img id="homeThumbnail" width="10px" height="10px" src="../img/logo.png">
 
           <script id="link" type="text/html">
             <a-entity class="link"
@@ -57,16 +58,32 @@
         </a-assets>
 
         <a-entity id="target">
-          <a-sky id="image-360" radius="10" src="#city"></a-sky>
-          <a-entity gltf-model="#tree" rotation="0 90 0" scale="0.01 0.01 0.01" position="3.21 -0.88 3.26"></a-entity>
-          <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl" position="-9.72 -1.04 0" scale="0.01 0.01 0.01" rotation="0 90 0"></a-entity>
-          <a-entity link="href: ../proyect1/index.php; title: My Homepage; image: #homeThumbnail" position="-1.28 2.25 8.69"></a-entity>
+          <a-sky id="image-360" radius="0" src="#city">
+            <a-entity click-drag gltf-model="#tree" rotation="0 90 0" scale="0.01 0.01 0.01" position="3.21 -0.88 3.26"></a-entity>
+            <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl" position="-9.72 -1.04 0" scale="0.01 0.01 0.01" rotation="0 90 0"></a-entity>
+            <a-entity link="href: ../proyect1/index.php; title: My Homepage; image: #homeThumbnail" position="-1.28 2.25 8.69"></a-entity>
+            <a-cylinder click-drag position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+          </a-sky>
         </a-entity>
 
-        <a-entity id="camera1" camera look-controls>
-  				<a-entity geometry="primitive:cone; radius-bottom:1; radius-top:0" scale=".33 1 .33"
-          position="0 0 0" rotation="90 0 0" material="color: #0099ff; transparent: true; opacity:0.5"></a-entity>
-        </a-entity>
+
+
+        <a-entity
+          camera="userHeight: 1.6"
+          look-controls
+          id="camera1"
+          camera="fov: 80; zoom: 1; rotation: '90 0 0'"
+          orbit-controls="
+              autoRotate: false;
+              target: #target;
+              enableDamping: false;
+              rotateSpeed:0.25;
+              minDistance:3;
+              maxDistance:100;
+              "
+          mouse-cursor="">
+
+      </a-entity>
           <!--<a-cursor id="cursor"
             animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
             animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
@@ -81,7 +98,7 @@
         <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
         <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
         <a-sky color="#ECECEC"></a-sky>-->
-        </a-scene>
+	  </a-scene>
     </div>
   </body>
 </html>
