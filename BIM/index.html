@@ -41,14 +41,16 @@
         </a-assets>
         <a-entity id="target">
           <a-sky color="#FFFFFF"></a-sky>
-          <a-image id="image-360" radius="10" height="1" width="1.5" src="#city"></a-image>
+          <a-image id="image-360" radius="10" height="1" width="1.5" src="#city" rotation="270 0 0" position="0 2.4 0"></a-image>
         </a-entity>
 
         <a-entity
           id="camera"
-          camera="fov: 80; zoom: 10;"
-          position="0 2 5"
+          rotation="0 45 0"
+          camera="fov: 80; zoom: 1;"
+          position="0 3 0"
           orbit-controls="
+              rotateTo: {x:0,y:0,z:0};
               autoRotate: false;
               target: #target;
               enableDamping: true;
@@ -59,8 +61,8 @@
               maxDistance:100;
               "
           mouse-cursor="">
-          <a-entity geometry="primitive:cone; radius-bottom:1; radius-top:0" scale=".33 1 .33" position="0 0 0" rotation="90 0 0" material="color: #0099ff; transparent: true; opacity:0.5"></a-entity>
-      </a-entity>
+          <a-entity geometry="primitive:cone; radius-bottom:1; radius-top:0" scale=".33 1 .33" position="0 0 0" rotation="0 0 0" material="color: #0099ff; transparent: true; opacity:0.5"></a-entity>
+        </a-entity>
           <!--<a-cursor id="cursor"
             animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
             animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
