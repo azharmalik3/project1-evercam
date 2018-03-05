@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  		<title>Project 1</title>
+  		<meta name="description" content="Evercam timelapse constructions cameras">
+  		<meta property="og:title" content="Evercam" />
+  		<meta property="og:url" content="https://project1-evercam.herokuapp.com/" />
+  		<meta property="og:description" content="Evercam timelapse constructions cameras">
+  		<meta property="og:image" content="https://project1-evercam.herokuapp.com/img/logo.png">
+  		<meta property="og:type" content="website" />
+
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, user-scalable=no">
+      <link rel="stylesheet" href="style.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script type="text/javascript" src="bimOverlay.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+      <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    </head>
+    <body>
+      <div id="comparison">
+        <img id="myFigure" src="img/snapshot/background.jpg"></img>
+        <div id="handle"></div>
+        <div id="divisor">
+          <img id="imgD" src="img/bim/1.png"></img>
+        </div>
+        <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
+        <div id="constrols">
+          <select class="form-control" id="sel1" onchange="myFunction()">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+          </select>
+        </div>
+      </div>
+    </body>
+</html>

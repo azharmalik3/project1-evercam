@@ -19,7 +19,8 @@
 							</a>
 						</li>
 						<li>
-							<a if="btn-pano" class="buttons">
+              <input type="file" onchange="previewFile()"><br>
+							<a id="btn-pano" class="buttons">
 								Add image
 							</a>
 						</li>
@@ -37,11 +38,17 @@
       <a-scene id="content" inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
 
   		<a-assets id ="myAsset">
-          <img id="city" crossorigin="anonymous" src="img/mia.jpg">
-        </a-assets>
+        <img id="city" crossorigin="anonymous" src="img/mia.jpg">
+        <a-asset-item id="tree-obj" src="assets/mi.obj"></a-asset-item>
+        <a-asset-item id="tree-mtl" src="assets/mi.mtl"></a-asset-item>
+      </a-assets>
         <a-entity id="target">
           <a-sky color="#FFFFFF"></a-sky>
-          <a-image id="image-360" radius="10" height="1" width="1.5" src="#city" rotation="270 0 0" position="0 2.4 0"></a-image>
+          <a-image id="image-360" radius="10" height="1" width="1.5" src="#city" rotation="270 0 0" position="0 -2.5 0" scale="10 10 10"></a-image>
+        </a-entity>
+
+        <a-entity>
+          <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl" position="-2.5 0 0" scale="0.1 0.1 0.1" rotation="-90 0 0"></a-entity>
         </a-entity>
 
         <a-entity
@@ -50,11 +57,13 @@
           camera="fov: 80; zoom: 1;"
           position="0 3 0"
           orbit-controls="
-              rotateTo: {x:0,y:0,z:0};
               autoRotate: false;
               target: #target;
-              enableDamping: true;
+              enableDamping: false;
               enableRotate: false;
+              enableZoom: true;
+              invertZoom: true;
+              minZoom: -10;
               dampingFactor: 0.125;
               rotateSpeed:0.25;
               minDistance:3;
@@ -63,20 +72,6 @@
           mouse-cursor="">
           <a-entity geometry="primitive:cone; radius-bottom:1; radius-top:0" scale=".33 1 .33" position="0 0 0" rotation="0 0 0" material="color: #0099ff; transparent: true; opacity:0.5"></a-entity>
         </a-entity>
-          <!--<a-cursor id="cursor"
-            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-            event-set__1="_event: mouseenter; color: springgreen"
-            event-set__2="_event: mouseleave; color: black"
-            fuse="true"
-            raycaster="objects: .link"></a-cursor>-->
-
-
-        <!--<a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-        <a-sky color="#ECECEC"></a-sky>-->
 	  </a-scene>
     </div>
   </body>

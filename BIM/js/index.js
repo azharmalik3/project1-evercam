@@ -1,6 +1,20 @@
-registerAframeClickDragComponent(window.AFRAME);
+//registerAframeClickDragComponent(window.AFRAME);
+
+function previewFile(){
+     var preview = document.getElementById('city'); //selects the query named img
+     var reader  = new FileReader();
+
+     reader.onloadend = function () {
+         preview.src = reader.result;
+     }
+}
 
 $(document).ready(function () {
+
+  $('#btn-pano').click(function(e){
+    previewFile();
+  });
+
   $('#btn-object').click( function(e){
 		function makeid() {
 		  var text = "";
