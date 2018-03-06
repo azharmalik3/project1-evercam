@@ -124,6 +124,7 @@ input[type=range]{
 	-moz-appearance:none;
 	position: absolute;
 	top: 50%; left: -25px;
+  width: 0%;
   transform: translateY(-50%);
 	background: transparent;
 	width: calc(100% + 50px);
