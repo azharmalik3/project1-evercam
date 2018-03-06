@@ -4,6 +4,8 @@ $(document).ready(function() {
         format: 'dd/mm/yyyy'
     });
 
+    var esto = $( "#myFigure" ).width();
+    imgD.style.width = esto+"px";
     $(window).bind('resize', function() {
       var esto = $( "#myFigure" ).width();
       imgD.style.width = esto+"px";
