@@ -7,7 +7,7 @@ $(document).ready(function() {
     var esto = $( "#myFigure" ).width();
     imgD.style.width = esto+"px";
     $(window).bind('resize', function() {
-      var esto = $( "#myFigure" ).width();
+      esto = $( "#myFigure" ).width();
       imgD.style.width = esto+"px";
     });
 });
