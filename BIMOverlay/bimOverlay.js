@@ -1,9 +1,4 @@
 $(document).ready(function() {
-
-    $('#datepicker').datepicker({
-        format: 'dd/mm/yyyy'
-    });
-
     var esto = $( "#myFigure" ).width();
     imgD.style.width = esto+"px";
     $(window).bind('resize', function() {
