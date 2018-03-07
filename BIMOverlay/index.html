@@ -22,7 +22,7 @@
     </head>
     <body>
 
-      <div id="comparison">
+      <div id="comparison" onclick="point_it(event)">
         <img id="myFigure" src="img/snapshot/background.jpg" unselectable="on"></img>
         <div id="handle"></div>
         <div id="divisor">
@@ -30,27 +30,39 @@
         </div>
         <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
         <div id="constrols">
-          <select class="form-control" id="sel1" onchange="myFunction()">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>13</option>
-            <option>14</option>
-            <option>15</option>
-            <option>16</option>
-            <option>17</option>
-            <option>18</option>
-            <option>19</option>
-          </select>
+          <div id="size">
+            <div id="plus"><i class="fas fa-plus"></i></div>
+            <div id="minus"><i class="fas fa-minus"></i></div>
+            <div id="up"><i class="fas fa-arrow-up"></i></div>
+            <div id="down"><i class="fas fa-arrow-down"></i></div>
+            <div id="left"><i class="fas fa-arrow-left"></i></div>
+            <div id="right"><i class="fas fa-arrow-right"></i></div>
+            <div id="redo"><i class="fas fa-redo"></i></div>
+            <div id="undo"><i class="fas fa-undo"></i></div>
+          </div>
+          <div id="diap">
+            <select class="form-control" id="sel1" onchange="myFunction()">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+            </select>
+          </div>
         </div>
       </div>
     </body>
