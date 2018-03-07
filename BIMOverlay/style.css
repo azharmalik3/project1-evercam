@@ -128,6 +128,7 @@ html,body{
 }
 
 #slider{
+  pointer-events: none;
   outline: none;
 	-webkit-appearance:none;
 	-moz-appearance:none;
@@ -147,6 +148,7 @@ html,body{
 }
 
 input[type=range]::-webkit-slider-thumb {
+  pointer-events:auto;
   -webkit-appearance: none;
   border: none;
   height: 50px;
@@ -160,6 +162,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 input[type=range]::-moz-range-thumb {
+  pointer-events:auto;
   -webkit-appearance: none;
   border: none;
   height: 50px;
@@ -173,6 +176,7 @@ input[type=range]::-moz-range-thumb {
 }
 
 input[type=range]::-ms-thumb {
+  pointer-events:auto;
   -webkit-appearance: none;
   border: none;
   height: 50px;
@@ -186,6 +190,7 @@ input[type=range]::-ms-thumb {
 }
 
 input[type=range]::-moz-range-track {
+  pointer-events: disabled;
 	-moz-appearance:none;
 	height:15px;
 	width: 100%;
