@@ -111,3 +111,9 @@ function lastBim(){
   photo = "img/bim/" + image + ".png";
   $("#imgD").attr("src",photo);
 }
+
+function myFunction(){
+  image = $("#sel1").val();
+  photo = "img/bim/" + image + ".png";
+  $("#imgD").attr("src",photo);
+}
