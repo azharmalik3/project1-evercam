@@ -21,14 +21,17 @@
 
     </head>
     <body>
-
       <div id="comparison" onclick="point_it(event)">
-        <img id="myFigure" src="img/snapshot/background.jpg" unselectable="on"></img>
-        <div id="handle"></div>
-        <div id="divisor">
-          <img id="imgD" src="img/bim/1.png" unselectable="on"></img>
-        </div>
-        <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
+          <img id="myFigure" src="img/snapshot/03.jpg" unselectable="on"></img>
+          <div id="handle"></div>
+          <div id="divisor">
+            <!--<video id="imgD" controls autoplay>
+              <source src="video.mov">
+            </video>-->
+            <img id="imgD" class="edit" src="img/bim/1.png" unselectable="on"></img>
+
+          </div>
+          <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
         <div id="constrols">
           <div id="size">
             <div id="plus"><i class="fas fa-plus"></i></div>
@@ -66,6 +69,7 @@
           </div>
         </div>
         <div id="player">
+          <div id="edit2" onclick="removeEdit()"><i class="fas fa-edit"></i></div>
           <div id="first" onclick="firstBim()"><i class="fas fa-fast-backward"></i></div>
           <div id="prev" onclick="prevPhoto()"><i class="fas fa-step-backward"></i></div>
           <div id="stop" onclick="stop()"><i class="fas fa-stop"></i></div>

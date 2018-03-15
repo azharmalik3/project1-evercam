@@ -10,7 +10,8 @@ $(document).ready(function() {
 
     $(window).bind('resize', function() {
       esto = $( "#myFigure" ).width();
-      imgD.style.width = esto+"px";
+      var myEdit = document.getElementsByClassName("edit");
+      myEdit[0].style.width = esto+"px";
       player = (esto / 2) - myPlayer;
       document.getElementById("player").style.left = player + "px";
     });
@@ -26,25 +27,42 @@ $(document).ready(function() {
       document.getElementById("imgD").style.transform = "rotate(" + angle + "deg)";
     }
     document.getElementById("left").onclick = function(){
-      var move = document.getElementById('imgD').clientWidth;
-      imgD.style.width = (move - 4) + "px";
+      var move = $('#imgD').css('marginLeft');
+      move = parseInt(move);
+      imgD.style.margin = "0px 0px 0px " + (move - 20) + "px";
     }
     document.getElementById("right").onclick = function(){
-      var move = document.getElementById('imgD').clientWidth;
-      imgD.style.width = (move + 4) + "px";
+      var move = $('#imgD').css('marginLeft');
+      move = parseInt(move);
+      imgD.style.margin = "0px 0px 0px " + (move + 20) + "px";
     }
     document.getElementById("plus").onclick = function(){
-      var move = document.getElementById('imgD').clientHeight;
-      imgD.style.height = (move + 4) + "px";
+      var myImg = document.getElementById("imgD");
+      var currWidth = myImg.clientWidth;
+      if(currWidth == 2500) return false;
+       else{
+          myImg.style.width = (currWidth + 100) + "px";
+      }
     }
     document.getElementById("minus").onclick = function(){
-      var move = document.getElementById('imgD').clientHeight;
-      imgD.style.height = (move - 4) + "px";
+      var myImg = document.getElementById("imgD");
+      var currWidth = myImg.clientWidth;
+      if(currWidth == 100) return false;
+      else{
+          myImg.style.width = (currWidth - 100) + "px";
+      }
     }
     document.getElementById("up").onclick = function(){
       margin = (margin - 2);
       document.getElementById("imgD").style.marginTop = margin + "px";
     }
+
+    document.getElementById("edit2").onclick = function(){
+      var element = document.getElementById("imgD");
+      element.classList.remove("edit");
+      console.log("hecho");
+    }
+
     document.getElementById("down").onclick = function(){
       margin = (margin + 2);
       document.getElementById("imgD").style.marginTop = margin + "px";
@@ -87,7 +105,7 @@ function prevPhoto(){
 }
 
 function play(){
-  for(var i = 1; i < 21; i++){
+  for(var i = 1; i < 302; i++){
       image = i;
       doSetTimeout(i);
   }
@@ -96,8 +114,8 @@ function play(){
 function doSetTimeout(i){
   setTimeout(function(){
     photo = "img/bim/" + i + ".png";
-    $("#imgD").attr("src",photo);
-  }, i * 500);
+    var myPhoto = $("#imgD").attr("src",photo);
+  }, i * 100);
 }
 
 function firstBim(){
