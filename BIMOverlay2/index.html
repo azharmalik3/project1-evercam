@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  		<title>Project 1</title>
+  		<meta name="description" content="Evercam timelapse constructions cameras">
+  		<meta property="og:title" content="Evercam" />
+  		<meta property="og:url" content="https://project1-evercam.herokuapp.com/" />
+  		<meta property="og:description" content="Evercam timelapse constructions cameras">
+  		<meta property="og:image" content="https://project1-evercam.herokuapp.com/img/logo.png">
+  		<meta property="og:type" content="website" />
+
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, user-scalable=no">
+      <link rel="stylesheet" href="style.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script type="text/javascript" src="bimOverlay.js"></script>
+      <script type="text/javascript" src="fabric.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+      <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    </head>
+    <body>
+      <div id="comparison" onclick="point_it(event)">
+          <img id="myFigure" src="img/snapshot/03.jpg" unselectable="on"></img>
+          <div id="handle"></div>
+          <div id="divisor">
+            <canvas id="myCanvas"></canvas>
+            <script>
+              $(function(){
+
+                  var context=document.getElementById("myCanvas").getContext("2d");
+
+                  var image=new Image();
+                  image.onload=function(){
+                     context.drawImage(image,10,10);
+                  }
+                  image.src="img/bim/300.png";
+                  image.width = "200px";
+                  image.height = "200px";
+
+                  document.getElementById("edit2").addEventListener("click", function(){console.log("clicked");}, false);
+
+
+              }); // end $(function(){});
+              </script>
+          </div>
+          <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
+        <div id="constrols">
+          <div id="size">
+            <div id="plus"><i class="fas fa-plus"></i></div>
+            <div id="minus"><i class="fas fa-minus"></i></div>
+            <div id="up"><i class="fas fa-arrow-up"></i></div>
+            <div id="down"><i class="fas fa-arrow-down"></i></div>
+            <div id="left"><i class="fas fa-arrow-left"></i></div>
+            <div id="right"><i class="fas fa-arrow-right"></i></div>
+            <div id="redo"><i class="fas fa-redo"></i></div>
+            <div id="undo"><i class="fas fa-undo"></i></div>
+          </div>
+          <div id="diap">
+            <select class="form-control" id="sel1" onchange="myFunction()">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+              <option>20</option>
+            </select>
+          </div>
+        </div>
+        <div id="player">
+          <div id="edit2" onclick="removeEdit()"><i class="fas fa-edit"></i></div>
+          <div id="first" onclick="firstBim()"><i class="fas fa-fast-backward"></i></div>
+          <div id="prev" onclick="prevPhoto()"><i class="fas fa-step-backward"></i></div>
+          <div id="stop" onclick="stop()"><i class="fas fa-stop"></i></div>
+          <div id="pause"><i class="fas fa-pause"></i></div>
+          <div id="play" onclick="play()"><i class="fas fa-play"></i></div>
+          <div id="next" onclick="nextPhoto()"><i class="fas fa-step-forward"></i></div>
+          <div id="end" onclick="lastBim()"><i class="fas fa-fast-forward"></i></div>
+        </div>
+      </div>
+    </body>
+</html>

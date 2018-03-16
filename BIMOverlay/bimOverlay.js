@@ -115,7 +115,7 @@ function doSetTimeout(i){
   setTimeout(function(){
     photo = "img/bim/" + i + ".png";
     var myPhoto = $("#imgD").attr("src",photo);
-  }, i * 100);
+  }, i * 80);
 }
 
 function firstBim(){
