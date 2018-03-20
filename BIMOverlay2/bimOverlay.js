@@ -10,20 +10,39 @@ $(document).ready(function() {
     var player = (esto / 2) - myPlayer;
     document.getElementById("player").style.left = player + "px";
 
-    document.getElementById("edit2").onclick = function(){
-      var canvas = document.getElementById('myCanvas');
-      if (canvas.getContext){
-         var ctx = canvas.getContext('2d');
-         var image2 = new Image();
-         image2.onload = function(){
-            ctx.drawImage(image2,0,0);
-         };
-         image2.src = 'img/bim/300.png';
-      } else {
-         alert('Necesitas un navegador actualizado para ver esta demo.');
-      }
+    var canvas2 = document.querySelector('myCanvas');
+    var alto = comparison.style.width;
+    var ancho = comparison.style.height;
+    fitToContainer(canvas2);
+
+    function fitToContainer(canvas2){
+      // Make it visually fill the positioned parent
+      myCanvas.style.width = ancho;
+      myCanvas.style.height= alto;
+      // ...then set the internal size to match
+      myCanvas.width  = myCanvas.offsetWidth;
+      myCanvas.height = myCanvas.offsetHeight;
     }
 
+    var canvas = this.__canvas = new fabric.Canvas('myCanvas');
+    canvas.selection = true;
+
+    var ancho = document.getElementById("comparison").offsetWidth;
+    var alto = document.getElementById("comparison").offsetHeight;
+
+    fabric.Image.fromURL('img/bim/300.png', function(img) {
+    var rect = new fabric.Rect({width: ancho, height: alto});
+    var pattern = new fabric.Pattern({source: img.getElement(), offsetX: 0, offsetY: 0});
+    rect.scale(0.7).set({
+      left: 100,
+      top: 100,
+      angle: 0,
+      fill: pattern,
+      selectable: true,
+      transparentCorners: false
+      });
+      canvas.add(rect).setActiveObject(rect);
+    });
 /*
 $(window).bind('resize', function() {
   esto = $( "#myFigure" ).width();

@@ -29,13 +29,12 @@
             <!--<video id="imgD" controls autoplay>
               <source src="video.mov">
             </video>-->
-            <img id="imgD" class="edit" src="img/bim/1.png" unselectable="on"></img>
+            <img id="imgD" class="edit" src="img/bim/30.png" unselectable="on"></img>
 
 
           </div>
           <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
-        <div id="constrols">
-          <div id="size">
+        <div id="controls" style="display:none">
             <div id="plus"><i class="fas fa-plus"></i></div>
             <div id="minus"><i class="fas fa-minus"></i></div>
             <div id="up"><i class="fas fa-arrow-up"></i></div>
@@ -44,34 +43,9 @@
             <div id="right"><i class="fas fa-arrow-right"></i></div>
             <div id="redo"><i class="fas fa-redo"></i></div>
             <div id="undo"><i class="fas fa-undo"></i></div>
-          </div>
-          <div id="diap">
-            <select class="form-control" id="sel1" onchange="myFunction()">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-              <option>11</option>
-              <option>12</option>
-              <option>13</option>
-              <option>14</option>
-              <option>15</option>
-              <option>16</option>
-              <option>17</option>
-              <option>18</option>
-              <option>19</option>
-              <option>20</option>
-            </select>
-          </div>
         </div>
         <div id="player">
-          <div id="edit2" onclick="removeEdit()"><i class="fas fa-edit"></i></div>
+          <div id="edit2"><i class="fas fa-edit"></i></div>
           <div id="first" onclick="firstBim()"><i class="fas fa-fast-backward"></i></div>
           <div id="prev" onclick="prevPhoto()"><i class="fas fa-step-backward"></i></div>
           <div id="stop" onclick="stop()"><i class="fas fa-stop"></i></div>

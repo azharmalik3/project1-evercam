@@ -27,24 +27,6 @@
           <div id="handle"></div>
           <div id="divisor">
             <canvas id="myCanvas"></canvas>
-            <script>
-              $(function(){
-
-                  var context=document.getElementById("myCanvas").getContext("2d");
-
-                  var image=new Image();
-                  image.onload=function(){
-                     context.drawImage(image,10,10);
-                  }
-                  image.src="img/bim/300.png";
-                  image.width = "200px";
-                  image.height = "200px";
-
-                  document.getElementById("edit2").addEventListener("click", function(){console.log("clicked");}, false);
-
-
-              }); // end $(function(){});
-              </script>
           </div>
           <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
         <div id="constrols">
