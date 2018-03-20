@@ -15,6 +15,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script type="text/javascript" src="bimOverlay.js"></script>
       <script type="text/javascript" src="fabric.min.js"></script>
+      <script type="text/javascript" src="eye.js"></script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
@@ -22,6 +23,50 @@
 
     </head>
     <body>
+
+      <div id="myRow" class="row" style="display:none">
+
+       <div id="myCanvas" class="col-md-6">
+         <canvas width="800" height="600" id="canvas"></canvas>
+       </div>
+
+       <div id="values" class="col-md-6">
+         <dl>
+           <dt>Fx</dt>
+           <dd>
+             <input id="Fx" type="range" min="0.0" max="2.0" value="1.0" step="0.01"/>
+             <span id="Fx_label"></span>
+           </dd>
+           <dt>Fy</dt>
+           <dd>
+             <input id="Fy" type="range" min="0.0" max="2.0" value="1.0" step="0.01"/>
+             <span id="Fy_label"></span>
+           </dd>
+           <dt>a</dt>
+           <dd>
+             <input id="a" type="range" min="0.0" max="4.0" value="1.0" step="0.001"/>
+             <span id="a_label"></span>
+           </dd>
+           <dt>b</dt>
+           <dd>
+             <input id="b" type="range" min="0.0" max="4.0" value="1.0" step="0.001"/>
+             <span id="b_label"></span>
+           </dd>
+           <dt>scale</dt>
+           <dd>
+             <input id="scale" type="range" min="0.0" max="20.0" value="1.0" step="0.001"/>
+             <span id="scale_label"></span>
+           </dd>
+           <dt>fov x</dt>
+           <dd><input id="fovx" type="range" min="0.0" max="2.0" value="1.0" step="0.001"/></dd>
+           <dt>fov y</dt>
+           <dd><input id="fovy" type="range" min="0.0" max="2.0" value="1.0" step="0.001"/></dd>
+         </dl>
+         <input id="ok" type="button" name="Ok" value="Ok"/>
+         <input id="cancel" type="button" name="Cancel" value="Cancel"/>
+       </div>
+     </div>
+
       <div id="comparison" onclick="point_it(event)">
           <img id="myFigure" src="img/snapshot/03.jpg" unselectable="on"></img>
           <div id="handle"></div>
@@ -33,7 +78,7 @@
 
 
           </div>
-          <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
+          <input type="range" min="0" max="100" value="49" id="slider" oninput="moveDivisor()">
         <div id="controls" style="display:none">
             <div id="plus"><i class="fas fa-plus"></i></div>
             <div id="minus"><i class="fas fa-minus"></i></div>
@@ -45,13 +90,14 @@
             <div id="undo"><i class="fas fa-undo"></i></div>
         </div>
         <div id="player">
+          <input type="range" id="myInput" min="30" max="301" value="30" step="any"  oninput="showVal(this.value)" onchange="showVal(this.value)"></imput>
           <div id="edit2"><i class="fas fa-edit"></i></div>
           <div id="first" onclick="firstBim()"><i class="fas fa-fast-backward"></i></div>
-          <div id="prev" onclick="prevPhoto()"><i class="fas fa-step-backward"></i></div>
-          <div id="stop" onclick="stop()"><i class="fas fa-stop"></i></div>
-          <div id="pause"><i class="fas fa-pause"></i></div>
+          <div id="prev" onclick="prevPhoto()">-1</div>
+          <div id="stop" onclick="stop2()"><i class="fas fa-stop"></i></div>
+          <div id="pause" onclick="pause()"><i class="fas fa-pause"></i></div>
           <div id="play" onclick="play()"><i class="fas fa-play"></i></div>
-          <div id="next" onclick="nextPhoto()"><i class="fas fa-step-forward"></i></div>
+          <div id="next" onclick="nextPhoto()">+1</div>
           <div id="end" onclick="lastBim()"><i class="fas fa-fast-forward"></i></div>
         </div>
       </div>
