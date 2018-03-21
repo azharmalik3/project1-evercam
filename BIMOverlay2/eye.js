@@ -198,6 +198,7 @@ var FisheyeGl = function FisheyeGl(options){
         options.height
       )
     });
+    img.crossOrigin = '';
     img.src = url;
     return texture;
   }
