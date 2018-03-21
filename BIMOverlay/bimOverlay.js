@@ -2,7 +2,7 @@ var distorter, example;
 
 var i = 30;
 var photo;
-var image = 1;
+var image = 29;
 var para = 0;
 
 var angle = 0;
@@ -249,17 +249,15 @@ function nextPhoto(){
 }
 
 function prevPhoto(){
-  if(image > 1){
+  if(image > 30){
     image = image - 1;
     photo = "img/bim/" + image + ".png";
     $("#imgD").attr("src",photo);
   }else{
+    photo = "";
+    $("#imgD").attr("src",photo);
     alert("No more BIM");
   }
-}
-
-function transition() {
-
 }
 
 function play(){
@@ -282,29 +280,25 @@ function play(){
   }, 80);
 }
 
-function stop2(){
-  para = 1;
-  i = 30;
-  image = 30;
-  photo = "img/bim/" + image + ".png";
-  var myPhoto = $("#imgD").attr("src",photo);
-  document.getElementById("myInput").value = image;
-}
-
 function pause(){
   para = 1;
 }
 
 function firstBim(){
+  para = 1;
+  i = 30;
   image = 30;
-  photo = "img/bim/" + image + ".png";
-  $("#imgD").attr("src",photo);
+  photo = "";
+  var myPhoto = $("#imgD").attr("src",photo);
+  document.getElementById("myInput").value = image;
 }
 
 function lastBim(){
+  i = 301;
   image = 301;
   photo = "img/bim/" + image + ".png";
-  $("#imgD").attr("src",photo);
+  var myPhoto = $("#imgD").attr("src",photo);
+  document.getElementById("myInput").value = image;
 }
 
 function myFunction(){
