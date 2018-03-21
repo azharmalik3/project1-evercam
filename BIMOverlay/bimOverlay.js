@@ -19,14 +19,14 @@ $(document).ready(function() {
     imgD.style.width = esto+"px";
 
     var myPlayer = $( "#player" ).width();
-    var player = (esto / 2) - myPlayer;
+    var player = (esto / 2) - (myPlayer / 1.5);
     document.getElementById("player").style.left = player + "px";
 
     $(window).bind('resize', function() {
       esto = $( "#myFigure" ).width();
       var myEdit = document.getElementsByClassName("edit");
       myEdit[0].style.width = esto+"px";
-      player = (esto / 2) - myPlayer;
+      player = (esto / 2) - (myPlayer / 1.5);
       document.getElementById("player").style.left = player + "px";
     });
 
@@ -271,17 +271,19 @@ function play(){
       var myPhoto = $("#imgD").attr("src",photo);
       document.getElementById("myInput").value = i;
       i++;
+      console.log("esto: " + i);
     } else{
       clearInterval(refreshIntervalId);
-      i = 30;
       console.log("PARANDO");
+      if(i == 302){
+        i = 30;
+      }
     }
   }, 80);
 }
 
 function stop2(){
   para = 1;
-  console.log(para);
   i = 30;
   image = 30;
   photo = "img/bim/" + image + ".png";
@@ -291,7 +293,6 @@ function stop2(){
 
 function pause(){
   para = 1;
-  console.log(para);
 }
 
 function firstBim(){
