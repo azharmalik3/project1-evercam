@@ -292,7 +292,7 @@ function firstBim(){
   para = 1;
   i = 30;
   image = 30;
-  photo = "";
+  photo = "https://s3-eu-west-1.amazonaws.com/bimevercam/transparent.png";
   distorter = FisheyeGl({
     image: photo
   });

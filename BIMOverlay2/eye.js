@@ -33,7 +33,7 @@ var FisheyeGl = function FisheyeGl(options){
     b : 1.0,
     Fx : 0.0,
     Fy : 0.0,
-    scale : 1.5
+    scale : 1.0
   };
   var fov = options.fov || {
     x : 1.0,
@@ -189,6 +189,7 @@ var FisheyeGl = function FisheyeGl(options){
   function loadImageFromUrl(gl, url, callback){
     var texture = gl.createTexture();
     var img = new Image();
+
     img.addEventListener("load", function onload(){
       loadImage(gl, img, callback, texture);
       options.width = img.width;
@@ -198,8 +199,8 @@ var FisheyeGl = function FisheyeGl(options){
         options.height
       )
     });
-    img.crossOrigin = '';
     img.src = url;
+    img.crossOrigin = '';
     return texture;
   }
 

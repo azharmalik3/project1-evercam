@@ -48,7 +48,7 @@ canvas {
   min-width: 200px;
   min-height: 200px;
   display: block;
-  border: solid black 5px;
+  border: none;
 }
 
 
