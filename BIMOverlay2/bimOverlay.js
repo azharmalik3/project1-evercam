@@ -80,7 +80,7 @@ $(document).ready(function() {
 
     //distorter
     distorter = FisheyeGl({
-      image: photo[35].src
+      image: photo[30].src
     });
 
     function onSliderChange() {
@@ -256,7 +256,6 @@ function prevPhoto(){
       image: photo[image].src
     });
   }else{
-    photo = "";
     distorter = FisheyeGl({
       image: photo[0].src
     });
@@ -294,7 +293,7 @@ function firstBim(){
   i = 30;
   image = 30;
   distorter = FisheyeGl({
-    image: photo[image].src
+    image: photo[0].src
   });
   document.getElementById("myInput").value = image;
 }

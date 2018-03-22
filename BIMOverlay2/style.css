@@ -246,25 +246,53 @@ input[type=range]::-moz-range-track {
 
 #controls2 div div{
   font-size: 20px;
+  text-align: center;
 }
 
 #controls2 div div:hover{
   background-color: rgba(143, 178, 213, 0.55);
 }
 
-#size2{
+#controls2{
   display: inline-flex;
   width: 100%;
 }
 
-#size2 div {
-  width: 100%;
-  text-align: center;
+#size2{
+  width: 25%;
+}
+
+#rotate{
+  width: 25%;
+}
+
+#arrows{
+  width: 50%;
 }
 
 #left{
   float: left;
+  width: 50%;
 }
+
+#right{
+  float: right;
+  width: 50%;
+}
+
+#plus{
+  height: 50%;
+}
+
+#minus{
+  height: 50%;
+}
+
+#size2 div, #rotate div{
+  padding: 10px;
+}
+
+
 
 #ok, #cancel, #reset{
   float: right;
