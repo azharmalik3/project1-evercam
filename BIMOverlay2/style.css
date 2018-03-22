@@ -16,7 +16,7 @@ html,body{
   z-index: 9999;
   right:40px;
   top:20px;
-  max-width:90%;
+  max-width:20%;
   max-height:90%;
   border-radius: 5px;
 }
@@ -292,13 +292,15 @@ input[type=range]::-moz-range-track {
   padding: 10px;
 }
 
+#buttons{
+  width: 100%;
+}
 
-
-#ok, #cancel, #reset{
+#buttons input{
   float: right;
-  width: 50px;
-  bottom: 10px;
+  width: 80px;
   margin: 10px;
+  bottom: 10px;
 }
 
 #player {

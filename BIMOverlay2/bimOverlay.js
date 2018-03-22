@@ -214,6 +214,10 @@ function showVal(value){
   });
 }
 
+function showVal2(value){
+  document.getElementById("myCanvas").style.opacity = value;
+}
+
 function getTransform(){
   var mio = document.getElementById("myCanvas");
   mio.style.transform = "rotate(" + angle + "deg)";
@@ -293,7 +297,7 @@ function firstBim(){
   i = 30;
   image = 30;
   distorter = FisheyeGl({
-    image: photo[0].src
+    image: photo[30].src
   });
   document.getElementById("myInput").value = image;
 }

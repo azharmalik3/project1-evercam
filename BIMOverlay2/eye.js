@@ -39,7 +39,7 @@ var FisheyeGl = function FisheyeGl(options){
     x : 1.0,
     y : 1.0
   }
-  var image = options.image || "https://s3-eu-west-1.amazonaws.com/bimevercam/transparent.png";
+  var image = options.image || "https://s3-eu-west-1.amazonaws.com/bimevercam/30.png";
 
   var selector = options.selector || "#canvas";
   var gl = getGLContext(selector);
@@ -199,8 +199,9 @@ var FisheyeGl = function FisheyeGl(options){
         options.height
       )
     });
-    img.crossOrigin = '';
+    img.crossOrigin = "";
     img.src = url;
+
 
     return texture;
   }
