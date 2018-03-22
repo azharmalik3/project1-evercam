@@ -1,7 +1,7 @@
 var distorter, example;
 
 var i = 30;
-var photo;
+var photo = [];
 var image = 29;
 var para = 0;
 
@@ -15,6 +15,12 @@ var translatey = 0;
 var timer = 0;
 
 $(document).ready(function() {
+    for (var i = 30; i <302; i++){
+      photo[i] = new Image();
+      photo[i].src = "https://s3-eu-west-1.amazonaws.com/bimevercam/" + i + ".png";
+      photo[i].crossOrigin = "";
+    }
+
     var esto = $( "#myFigure" ).width();
     myCanvas.style.width = esto+"px";
 
@@ -74,7 +80,7 @@ $(document).ready(function() {
 
     //distorter
     distorter = FisheyeGl({
-      image: "https://s3-eu-west-1.amazonaws.com/bimevercam/301.png"
+      image: photo[35].src
     });
 
     function onSliderChange() {
@@ -189,7 +195,6 @@ $(document).ready(function() {
 
     //btn ok & cancel
     document.getElementById("ok").onclick = function(){
-      document.getElementById('myFigure').src = canvas.toDataURL();
       jQuery('#controls').toggle('show');
       jQuery('#myRow').toggle('show');
     }
@@ -204,9 +209,8 @@ $(document).ready(function() {
 function showVal(value){
   image = Math.trunc(value);
   console.log(image);
-  photo = "https://s3-eu-west-1.amazonaws.com/bimevercam/" + image + ".png";
   distorter = FisheyeGl({
-    image: photo
+    image: photo[image].src
   });
 }
 
@@ -237,9 +241,8 @@ function point_it(event){
 function nextPhoto(){
   if(image < 302){
     image = image + 1;
-    photo = "https://s3-eu-west-1.amazonaws.com/bimevercam/" + image + ".png";
     distorter = FisheyeGl({
-      image: photo
+      image: photo[image].src
     });
   }else{
     alert("No more BIM");
@@ -249,14 +252,13 @@ function nextPhoto(){
 function prevPhoto(){
   if(image > 30){
     image = image - 1;
-    photo = "https://s3-eu-west-1.amazonaws.com/bimevercam/" + image + ".png";
     distorter = FisheyeGl({
-      image: photo
+      image: photo[image].src
     });
   }else{
     photo = "";
     distorter = FisheyeGl({
-      image: photo
+      image: photo[0].src
     });
     alert("No more BIM");
   }
@@ -267,9 +269,8 @@ function play(){
   var refreshIntervalId = setInterval(function(){
     if(i < 302 && para == 0){
       image = i;
-      photo = "https://s3-eu-west-1.amazonaws.com/bimevercam/" + i + ".png";
       distorter = FisheyeGl({
-        image: photo
+        image: photo[i].src
       });
       document.getElementById("myInput").value = i;
       i++;
@@ -292,9 +293,8 @@ function firstBim(){
   para = 1;
   i = 30;
   image = 30;
-  photo = "https://s3-eu-west-1.amazonaws.com/bimevercam/transparent.png";
   distorter = FisheyeGl({
-    image: photo
+    image: photo[image].src
   });
   document.getElementById("myInput").value = image;
 }
@@ -302,17 +302,15 @@ function firstBim(){
 function lastBim(){
   i = 301;
   image = 301;
-  photo = "https://s3-eu-west-1.amazonaws.com/bimevercam/" + image + ".png";
   distorter = FisheyeGl({
-    image: photo
+    image: photo[image].src
   });
   document.getElementById("myInput").value = image;
 }
 
 function myFunction(){
   image = $("#sel1").val();
-  photo = "https://s3-eu-west-1.amazonaws.com/bimevercam/" + image + ".png";
   distorter = FisheyeGl({
-    image: photo
+    image: photo[image].src
   });
 }

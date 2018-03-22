@@ -33,13 +33,13 @@ var FisheyeGl = function FisheyeGl(options){
     b : 1.0,
     Fx : 0.0,
     Fy : 0.0,
-    scale : 1.0
+    scale : 1.1
   };
   var fov = options.fov || {
     x : 1.0,
     y : 1.0
   }
-  var image = options.image || "images/barrel-distortion.png";
+  var image = options.image || "https://s3-eu-west-1.amazonaws.com/bimevercam/transparent.png";
 
   var selector = options.selector || "#canvas";
   var gl = getGLContext(selector);
@@ -199,8 +199,9 @@ var FisheyeGl = function FisheyeGl(options){
         options.height
       )
     });
-    img.src = url;
     img.crossOrigin = '';
+    img.src = url;
+
     return texture;
   }
 

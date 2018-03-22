@@ -7,13 +7,7 @@ html,body{
   padding: 0;
   font-family: 'arial';
   display: inline;
-}
-
-#ok, #cancel{
-  float: right;
-  width: 50px;
-  bottom: 10px;
-  margin: 10px;
+  color: transparent;
 }
 
 #myRow{
@@ -44,11 +38,14 @@ canvas {
   height: 100vh;
   width: 100vw;
   float : left;
-  background: transparent;
   min-width: 200px;
   min-height: 200px;
   display: block;
   border: none;
+}
+
+#myCanvas{
+  border:none;
 }
 
 
@@ -245,6 +242,35 @@ input[type=range]::-moz-range-track {
 
 #size div:hover{
   background-color: rgba(143, 178, 213, 0.55);
+}
+
+#controls2 div div{
+  font-size: 20px;
+}
+
+#controls2 div div:hover{
+  background-color: rgba(143, 178, 213, 0.55);
+}
+
+#size2{
+  display: inline-flex;
+  width: 100%;
+}
+
+#size2 div {
+  width: 100%;
+  text-align: center;
+}
+
+#left{
+  float: left;
+}
+
+#ok, #cancel, #reset{
+  float: right;
+  width: 50px;
+  bottom: 10px;
+  margin: 10px;
 }
 
 #player {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-  		<title>Project 1</title>
+  		<title>Evercam BIM Integration - Beta</title>
   		<meta name="description" content="Evercam timelapse constructions cameras">
   		<meta property="og:title" content="Evercam" />
   		<meta property="og:url" content="https://project1-evercam.herokuapp.com/" />
@@ -56,9 +56,27 @@
            <dt>fov y</dt>
            <dd><input id="fovy" type="range" min="-2.0" max="2.0" value="1.0" step="0.001"/></dd>
          </dl>
+         <div id="controls2">
+           <div id="size2">
+             <div id="plus"><i class="fas fa-plus"></i></div>
+             <div id="minus"><i class="fas fa-minus"></i></div>
+             <div id="redo"><i class="fas fa-redo"></i></div>
+             <div id="undo"><i class="fas fa-undo"></i></div>
+           </div>
+
+           <div id="arrows">
+             <div id="up"><i class="fas fa-arrow-up"></i></div>
+             <div id="left"><i class="fas fa-arrow-left"></i></div>
+             <div id="right"><i class="fas fa-arrow-right"></i></div>
+             <div id="down"><i class="fas fa-arrow-down"></i></div>
+           </div>
+
+         </div>
          <input id="ok" type="button" name="Ok" value="Ok"/>
          <input id="cancel" type="button" name="Cancel" value="Cancel"/>
+         <input id="reset" type="button" name="Reset" value="Reset"/>
        </div>
+
      </div>
 
       <div id="comparison" onclick="point_it(event)">
@@ -77,16 +95,6 @@
 
           </div>
           <input type="range" min="0" max="100" value="49" id="slider" oninput="moveDivisor()">
-        <div id="controls" style="display:none">
-            <div id="plus"><i class="fas fa-plus"></i></div>
-            <div id="minus"><i class="fas fa-minus"></i></div>
-            <div id="up"><i class="fas fa-arrow-up"></i></div>
-            <div id="down"><i class="fas fa-arrow-down"></i></div>
-            <div id="left"><i class="fas fa-arrow-left"></i></div>
-            <div id="right"><i class="fas fa-arrow-right"></i></div>
-            <div id="redo"><i class="fas fa-redo"></i></div>
-            <div id="undo"><i class="fas fa-undo"></i></div>
-        </div>
         <div id="player">
           <input type="range" id="myInput" min="30" max="301" value="30" step="any"  oninput="showVal(this.value)" onchange="showVal(this.value)"></imput>
           <div id="edit2"><i class="fas fa-edit"></i></div>
