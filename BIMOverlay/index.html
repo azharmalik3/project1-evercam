@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-  		<title>Project 1</title>
+      <link rel="icon" type="image/png" href="favicon.ico">
+  		<title>Evercam BIM Integration - Beta</title>
   		<meta name="description" content="Evercam timelapse constructions cameras">
   		<meta property="og:title" content="Evercam" />
   		<meta property="og:url" content="https://project1-evercam.herokuapp.com/" />
@@ -11,83 +12,106 @@
 
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, user-scalable=no">
-      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="css/style.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script type="text/javascript" src="bimOverlay.js"></script>
-      <script type="text/javascript" src="fabric.min.js"></script>
-      <script type="text/javascript" src="eye.js"></script>
+      <script src="js/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="js/bimOverlay.js"></script>
+      <script type="text/javascript" src="js/eye.js"></script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+      <script>
+        $( function() {
+          $("#myRow").draggable();
+        } );
+      </script>
+      <script>
+        window.addEventListener("load", function(event) {
+          $('#loader').remove();
+        });
+      </script>
 
     </head>
     <body>
-
-      <div id="myRow" class="row" style="display:none">
-
-       <div id="myCanvas" class="col-md-6">
-         <canvas width="800" height="600" id="canvas"></canvas>
-       </div>
-
+      <div id="loader">
+        <p>Loading</p>
+        <div class="loading"></div>
+      </div>
+      <div id="myRow" class="draggable" style="display:none">
+        <div id="bar">
+          <strong><span>Editor</span></strong>
+          <div>
+            <input id="myButton" type="button" value="X"></input>
+          </div>
+        </div>
        <div id="values" class="col-md-6">
          <dl>
-           <dt>Fx</dt>
+           <dt>Fx (Focal Lengths X)</dt>
            <dd>
-             <input id="Fx" type="range" min="0.0" max="2.0" value="1.0" step="0.01"/>
+             <input id="Fx" type="range" min="-2.0" max="2.0" value="1.0" step="0.01"/>
              <span id="Fx_label"></span>
            </dd>
-           <dt>Fy</dt>
+           <dt>Fy (Focal Lengths Y)</dt>
            <dd>
-             <input id="Fy" type="range" min="0.0" max="2.0" value="1.0" step="0.01"/>
+             <input id="Fy" type="range" min="-2.0" max="2.0" value="1.0" step="0.01"/>
              <span id="Fy_label"></span>
            </dd>
-           <dt>a</dt>
+           <dt>Expand Horizontal</dt>
            <dd>
              <input id="a" type="range" min="0.0" max="4.0" value="1.0" step="0.001"/>
              <span id="a_label"></span>
            </dd>
-           <dt>b</dt>
+           <dt>Expand Vertical</dt>
            <dd>
              <input id="b" type="range" min="0.0" max="4.0" value="1.0" step="0.001"/>
              <span id="b_label"></span>
            </dd>
-           <dt>scale</dt>
+           <dt>Transparency</dt>
            <dd>
-             <input id="scale" type="range" min="0.0" max="20.0" value="1.0" step="0.001"/>
-             <span id="scale_label"></span>
+             <input id="transparency" type="range" min="0" max="1" value="1" step="any"  oninput="showVal2(this.value)" onchange="showVal2(this.value)"/>
            </dd>
-           <dt>fov x</dt>
-           <dd><input id="fovx" type="range" min="0.0" max="2.0" value="1.0" step="0.001"/></dd>
-           <dt>fov y</dt>
-           <dd><input id="fovy" type="range" min="0.0" max="2.0" value="1.0" step="0.001"/></dd>
+           <dt>FoV x (Field of View X)</dt>
+           <dd><input id="fovx" type="range" min="-2.0" max="2.0" value="1.0" step="0.001"/></dd>
+           <dt>fov y (Field of View Y)</dt>
+           <dd><input id="fovy" type="range" min="-2.0" max="2.0" value="1.0" step="0.001"/></dd>
          </dl>
-         <input id="ok" type="button" name="Ok" value="Ok"/>
-         <input id="cancel" type="button" name="Cancel" value="Cancel"/>
+         <div id="controls2">
+           <div id="size2">
+             <div id="plus"><i class="fas fa-plus"></i></div>
+             <div id="minus"><i class="fas fa-minus"></i></div>
+           </div>
+
+           <div id="arrows">
+             <div id="up"><i class="fas fa-arrow-up"></i></div>
+             <div id="left"><i class="fas fa-arrow-left"></i></div>
+             <div id="right"><i class="fas fa-arrow-right"></i></div>
+             <div id="down"><i class="fas fa-arrow-down"></i></div>
+           </div>
+
+           <div id="rotate">
+             <div id="redo"><i class="fas fa-redo"></i></div>
+             <div id="undo"><i class="fas fa-undo"></i></div>
+           </div>
+
+         </div>
+         <div id="buttons">
+           <input id="ok" type="button" name="Ok" value="Ok"/>
+           <input id="cancel" type="button" name="Cancel" value="Cancel"/>
+           <input id="reset" type="button" name="Reset" value="Reset"/>
+         </div>
        </div>
+
      </div>
 
       <div id="comparison" onclick="point_it(event)">
           <img id="myFigure" src="img/snapshot/background.jpg" unselectable="on"></img>
           <div id="handle"></div>
           <div id="divisor">
-            <!--<video id="imgD" controls autoplay>
-              <source src="video.mov">
-            </video>-->
-            <img id="imgD" class="edit" unselectable="on"></img>
-
-
+            <div id="myCanvas" class="col-md-6">
+              <canvas id="canvas"></canvas>
+            </div>
           </div>
           <input type="range" min="0" max="100" value="49" id="slider" oninput="moveDivisor()">
-        <div id="controls" style="display:none">
-            <div id="plus"><i class="fas fa-plus"></i></div>
-            <div id="minus"><i class="fas fa-minus"></i></div>
-            <div id="up"><i class="fas fa-arrow-up"></i></div>
-            <div id="down"><i class="fas fa-arrow-down"></i></div>
-            <div id="left"><i class="fas fa-arrow-left"></i></div>
-            <div id="right"><i class="fas fa-arrow-right"></i></div>
-            <div id="redo"><i class="fas fa-redo"></i></div>
-            <div id="undo"><i class="fas fa-undo"></i></div>
-        </div>
         <div id="player">
           <input type="range" id="myInput" min="30" max="301" value="30" step="any"  oninput="showVal(this.value)" onchange="showVal(this.value)"></imput>
           <div id="edit2"><i class="fas fa-edit"></i></div>
