@@ -200,7 +200,19 @@ $(document).ready(function() {
     }
 
     document.getElementById("reset").onclick = function(){
-
+      $("#a").val(1);
+      $("#b").val(1);
+      $("#Fx").val(0);
+      $("#Fy").val(0);
+      $("#fovx").val(0);
+      $("#fovy").val(0);
+      distorter.lens.a = parseFloat($("#a_label")[0].innerHTML = $("#a").val());
+      distorter.lens.b = parseFloat($("#b_label")[0].innerHTML = $("#b").val());
+      distorter.lens.Fx = parseFloat($("#Fx_label")[0].innerHTML = $("#Fx").val());
+      distorter.lens.Fy = parseFloat($("#Fy_label")[0].innerHTML = $("#Fy").val());
+      distorter.fov.x = parseFloat($("#fovx").val());
+      distorter.fov.y = parseFloat($("#fovy").val());
+      distorter.run();
     }
 
     document.getElementById("myButton").onclick = function(){
