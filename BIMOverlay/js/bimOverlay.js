@@ -33,10 +33,8 @@ $(document).ready(function() {
     var player = (esto / 2) - (myPlayer / 1.5);
     document.getElementById("player").style.left = player + "px";
 
-    $(window).bind('resize', function() {
+    $(window).on('resize', function() {
       esto = $( "#myFigure" ).width();
-      var myEdit = document.getElementsByClassName("edit");
-      myEdit[0].style.width = esto+"px";
       player = (esto / 2) - (myPlayer / 1.5);
       document.getElementById("player").style.left = player + "px";
     });
@@ -96,6 +94,7 @@ $(document).ready(function() {
     });
 
     $("dl").on("change", onSliderChange);
+    //$("dd input").on("mousemove", onSliderChange);
 
     setSliders();
     readSliders();
@@ -200,6 +199,13 @@ $(document).ready(function() {
     }
 
     document.getElementById("reset").onclick = function(){
+      var mio = document.getElementById("myCanvas");
+      mio.style.transform = "rotate(0deg)";
+      mio.style.transform += "translate(0px, 0px)";
+      mio.style.transform += "scale(1, 1)";
+
+      $("#transparency").val(1);
+      document.getElementById("myCanvas").style.opacity = 1;
       $("#a").val(1);
       $("#b").val(1);
       $("#Fx").val(0);
@@ -226,7 +232,29 @@ $(document).ready(function() {
       jQuery('#controls').toggle('show');
       jQuery('#myRow').toggle('show');
     }
+
+    $('#myInput').focusin(thumbnails);
+    $('#myInput').mouseout(function(){
+      $('#myDiv').hide();
+    });
 });
+function thumbnails(){
+  var myRange = document.querySelector('#myInput');
+  var myValue = document.querySelector('#myValue');
+  var myUnits = 'myUnits';
+  var off = myRange.offsetWidth / (parseInt(myRange.max) - parseInt(myRange.min));
+  var px =  ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
+
+    myValue.parentElement.style.left = px + 'px';
+    myValue.parentElement.style.top = (myRange.offsetHeight - 170) + 'px';
+    myValue.innerHTML = "<div id='myDiv' style='border:2px solid white'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='height: 100%; width: 100%; object-fit: contain; position: absolute'></img></div>";//Math.trunc(myRange.value) + ' ' + myUnits;
+
+    myRange.oninput =function(){
+      px = ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
+      myValue.innerHTML = "<div id='myDiv' style='border:2px solid white'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='height: 100%; width: 100%; object-fit: contain; position: absolute'></img></div>";
+      myValue.parentElement.style.left = px + 'px';
+    };
+}
 
 function onSliderChange() {
   readSliders();
@@ -258,6 +286,7 @@ function setSliders() {
 //Slider show
 function showVal(value){
   image = Math.trunc(value);
+  i = image;
   console.log(image);
   if(image == 30){
     distorter = FisheyeGl({
@@ -303,6 +332,7 @@ function point_it(event){
 function nextPhoto(){
   if(image < 302){
     image = image + 1;
+    i = image;
     distorter = FisheyeGl({
       image: photo[image].src
     });
@@ -315,6 +345,7 @@ function nextPhoto(){
 function prevPhoto(){
   if(image > 30){
     image = image - 1;
+    i = image;
     distorter = FisheyeGl({
       image: photo[image].src
     });
@@ -354,7 +385,7 @@ function play(){
         document.getElementById("play").style.backgroundColor = "";
         playClicked = 0;
       }
-    }, 80);
+    }, 100);
   }
 }
 
@@ -386,6 +417,7 @@ function lastBim(){
 
 function myFunction(){
   image = $("#sel1").val();
+  i = image;
   distorter = FisheyeGl({
     image: photo[image].src
   });

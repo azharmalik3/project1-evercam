@@ -27,7 +27,7 @@
       </script>
       <script>
         window.addEventListener("load", function(event) {
-          $('#loader').remove();
+          $('#loader').hide("slow");
         });
       </script>
 
@@ -72,7 +72,7 @@
            </dd>
            <dt>FoV x (Field of View X)</dt>
            <dd><input id="fovx" type="range" min="-2.0" max="2.0" value="1.0" step="0.001"/></dd>
-           <dt>fov y (Field of View Y)</dt>
+           <dt>FoV y (Field of View Y)</dt>
            <dd><input id="fovy" type="range" min="-2.0" max="2.0" value="1.0" step="0.001"/></dd>
          </dl>
          <div id="controls2">
@@ -113,14 +113,17 @@
           </div>
           <input type="range" min="0" max="100" value="49" id="slider" oninput="moveDivisor()">
         <div id="player">
+          <span id="mySpan" style="position:absolute; min-width:100px;">
+            <span id="myValue"></span>
+          </span>
           <input type="range" id="myInput" min="30" max="301" value="30" step="any"  oninput="showVal(this.value)" onchange="showVal(this.value)"></imput>
-          <div id="edit2"><i class="fas fa-edit"></i></div>
-          <div id="first" onclick="firstBim()"><i class="fas fa-fast-backward"></i></div>
-          <div id="prev" onclick="prevPhoto()">-1</div>
-          <div id="pause" onclick="pause()"><i class="fas fa-pause"></i></div>
-          <div id="play" onclick="play()"><i class="fas fa-play"></i></div>
-          <div id="next" onclick="nextPhoto()">+1</div>
-          <div id="end" onclick="lastBim()"><i class="fas fa-fast-forward"></i></div>
+          <div class="button2" id="edit2"><i class="fas fa-edit"></i></div>
+          <div class="button2" id="first" onclick="firstBim()"><i class="fas fa-fast-backward"></i></div>
+          <div class="button2" id="prev" onclick="prevPhoto()">-1</div>
+          <div class="button2" id="pause" onclick="pause()"><i class="fas fa-pause"></i></div>
+          <div class="button2" id="play" onclick="play()"><i class="fas fa-play"></i></div>
+          <div class="button2" id="next" onclick="nextPhoto()">+1</div>
+          <div class="button2" id="end" onclick="lastBim()"><i class="fas fa-fast-forward"></i></div>
         </div>
       </div>
     </body>
