@@ -245,7 +245,7 @@ var FisheyeGl = function FisheyeGl(options){
 
   options.runner = options.runner|| function runner(dt){
 
-    //gl.clearColor(0, 0, 0, 0);
+    gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.DEPTH_TEST);
 
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);

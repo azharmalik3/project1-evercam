@@ -41,7 +41,7 @@
         <div id="bar">
           <strong><span>Editor</span></strong>
           <div>
-            <input id="myButton" type="button" value="X"></input>
+            <input id="closeEditor" type="button" value="X"></input>
           </div>
         </div>
        <div id="values" class="col-md-6">
@@ -68,7 +68,7 @@
            </dd>
            <dt>Transparency</dt>
            <dd>
-             <input id="transparency" type="range" min="0" max="1" value="1" step="any"  oninput="showVal2(this.value)" onchange="showVal2(this.value)"/>
+             <input id="transparency" type="range" min="0" max="1" value="1" step="any"/>
            </dd>
            <dt>FoV x (Field of View X)</dt>
            <dd><input id="fovx" type="range" min="-2.0" max="2.0" value="1.0" step="0.001"/></dd>
@@ -103,7 +103,7 @@
 
      </div>
 
-      <div id="comparison" onclick="point_it(event)">
+      <div id="comparison">
           <img id="myFigure" src="img/snapshot/background.jpg" unselectable="on"></img>
           <div id="handle"></div>
           <div id="divisor">
@@ -111,19 +111,18 @@
               <canvas id="canvas"></canvas>
             </div>
           </div>
-          <input type="range" min="0" max="100" value="49" id="slider" oninput="moveDivisor()">
+          <input type="range" min="0" max="100" value="49" id="slider">
         <div id="player">
           <span id="mySpan" style="position:absolute; min-width:100px;">
             <span id="myValue"></span>
           </span>
-          <input type="range" id="myInput" min="30" max="301" value="30" step="any"  oninput="showVal(this.value)" onchange="showVal(this.value)"></imput>
+          <input type="range" id="myInput" min="30" max="301" value="30" step="any"></imput>
           <div class="button2" id="edit2"><i class="fas fa-edit"></i></div>
-          <div class="button2" id="first" onclick="firstBim()"><i class="fas fa-fast-backward"></i></div>
-          <div class="button2" id="prev" onclick="prevPhoto()">-1</div>
-          <div class="button2" id="pause" onclick="pause()"><i class="fas fa-pause"></i></div>
-          <div class="button2" id="play" onclick="play()"><i class="fas fa-play"></i></div>
-          <div class="button2" id="next" onclick="nextPhoto()">+1</div>
-          <div class="button2" id="end" onclick="lastBim()"><i class="fas fa-fast-forward"></i></div>
+          <div class="button2" id="first"><i class="fas fa-fast-backward"></i></div>
+          <div class="button2" id="prev">-1</div>
+          <div class="button2" id="play"><i class="fas fa-play"></i></div>
+          <div class="button2" id="next">+1</div>
+          <div class="button2" id="end"><i class="fas fa-fast-forward"></i></div>
         </div>
       </div>
     </body>
