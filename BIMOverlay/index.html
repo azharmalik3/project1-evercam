@@ -110,43 +110,13 @@
           </div>
           <input type="range" min="0" max="100" value="49" id="slider">
         <div id="player">
-          <span id="mySpan" style="position:absolute; min-width:100px;">
-            <span id="myValue"></span>
-          </span>
+          <div id="mySpan" style="position:absolute; min-width:100px;">
+            <div id="myValue"></div>
+          </div>
           <div id="ruler">
-            <div id="limit">
-              <div id='imageValues'><span id="noselect"></span></div><!--//Math.trunc((myRange.value * 100) / 301)-->
-            </div>
-
+            <span id="inicio"><strong>0</strong></span>
             <input type="range" id="myInput" class="movement" min="30" max="301" value="30" step="any"></imput>
-            <table>
-                <tr>
-                    <td style='border-bottom: 1px solid #000;'>
-                        |
-                    </td><td style='border-bottom: 1px solid #000;'>
-                        |
-                    </td><td style='border-bottom: 1px solid #000;'>
-                        |
-                    </td><td style='border-bottom: 1px solid #000;'>
-                        |
-                    </td><td>
-                        |
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        0
-                    </td><td>
-                        25
-                    </td><td>
-                        50
-                    </td><td>
-                        75
-                    </td><td>
-                        100
-                    </td>
-                </tr>
-            </table>
+            <span id="final"><strong id="totaly"></strong></span>
           </div>
           <div class="button2" id="first"><i class="fas fa-fast-backward"></i></div>
           <div class="button2" id="prev">-1</div>

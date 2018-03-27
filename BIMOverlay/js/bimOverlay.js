@@ -1,5 +1,6 @@
 var distorter, example;
 
+var total = 0;
 var i = 30;
 var photo = [];
 var image = 29;
@@ -78,8 +79,6 @@ $(document).ready(function() {
             image = i;
             distorter.setImage(photo[i].src);
             document.getElementById("myInput").value = i;
-            moveDivisor3();
-            document.getElementById("noselect").innerHTML = myCifra;
             i++;
           } else{
             clearInterval(refreshIntervalId);
@@ -325,37 +324,35 @@ $(document).ready(function() {
 
     function loadImg(){
       for (var i = 30; i <302; i++){
+        total++;
         photo[i] = new Image();
         photo[i].src = "img/bim/" + i + ".png";
         //photo[i].src = "https://s3-eu-west-1.amazonaws.com/bimevercam/" + i + ".png";
         photo[i].crossOrigin = "";
       }
     }
+    document.getElementById("totaly").innerHTML = total;
 
-    var myRange = document.querySelector('#myInput');
-    var myValue = document.querySelector('#myValue');
-    var myUnits = 'myUnits';
-    var off = myRange.offsetWidth / (parseInt(myRange.max) - parseInt(myRange.min));
-    var px =  ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
-    var myCifra;
-    $("#myInput").mousemove(moveDivisor3);
     $('#myInput').focusin(thumbnails);
     $('#myInput').mouseout(function(){
       $('#myDiv').hide();
+      $('#numer').hide();
     });
-    function moveDivisor3() {
-      myCifra = Math.trunc(((myRange.value-30) * 100) / 271);
-      imageValues.style.left =myCifra +"%";
-    }
     function thumbnails(){
-        myValue.parentElement.style.left = px + 'px';
+
+      var myRange = document.querySelector('#myInput');
+      var myValue = document.querySelector('#myValue');
+      var myUnits = 'myUnits';
+      var off = myRange.offsetWidth / (parseInt(myRange.max) - parseInt(myRange.min));
+      var px =  ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
+        myValue.parentElement.style.left = (px + 30) + 'px';
         myValue.parentElement.style.top = (myRange.offsetHeight - 170) + 'px';
-        myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='width: 100%; position: absolute'></img></div></div>";//Math.trunc(myRange.value) + ' ' + myUnits;
+        myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='width: 100%; object-fit: contain; width: 100%; position: absolute'></img></div><div id='numer'><span><strong>"+ (Math.trunc(myRange.value) - 30) +"</strong></span></div>";//Math.trunc(myRange.value) + ' ' + myUnits;
 
         myRange.oninput =function(){
           px = ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
-          myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='width: 100%; object-fit: contain; position: absolute'></img></div>";
-          myValue.parentElement.style.left = px + 'px';
+          myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='width: 100%; object-fit: contain; position: absolute'></img></div><div id='numer'><span><strong>"+ (Math.trunc(myRange.value) - 30) +"</strong></span></div>";
+          myValue.parentElement.style.left = (px + 30) + 'px';
         };
     }
 

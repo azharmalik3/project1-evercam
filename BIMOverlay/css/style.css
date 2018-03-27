@@ -372,29 +372,21 @@ canvas {
 }
 
 #ruler{
-  margin: 18px 30px 0 15px;
-  width: 90%;
-}
-
-#ruler table{
-  width: 120%;
-}
-
-td{
-  width: 20%;
+  padding: 15px;
+  margin: 10px;
 }
 
 #myInput {
   position: relative;
   -webkit-appearance: none;
-  width: 97%;
+  width: 85%;
 }
 #myInput:focus {
   outline: none;
 }
 #myInput::-webkit-slider-runnable-track {
   width: 100%;
-  height: 36px;
+  height: 10px;
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -404,11 +396,13 @@ td{
 }
 #myInput::-webkit-slider-thumb {
   height: 36px;
-  width: 36px;
+  width: 15px;
+  border: solid 2px black;
   border-radius: 3px;
-  background: rgba(255,255,255,0.0);
+  background: rgba(255,255,255,1.0);
   cursor: pointer;
   -webkit-appearance: none;
+  margin-top: -12px;
 }
 #myInput:focus::-webkit-slider-runnable-track {
   background: #367ebd;
@@ -561,33 +555,9 @@ td{
 
 #myDiv {
     width: 200px;
-    height: 150px;
+    height: 130px;
     background-color: rgba(0, 0, 0, 0.0);
     padding: 0px;
-}
-
-#imageValues{
-  pointer-events: none;
-  position: absolute;
-  z-index: 999999;
-  width: 36px;
-  height: 36px;
-  background-color:  rgba(255, 255, 255, 0.8);
-  text-align: center;
-  border-radius: 2px;
-  vertical-align: middle;
-}
-
-#imageValues span{
-  text-align: center;
-  vertical-align: middle;
-  line-height: 36px;
-}
-
-#limit{
-  position: relative;
-  width: 84.5%;
-  max-width: 84.5%;
 }
 
 #dots{
@@ -597,4 +567,27 @@ td{
   color: white;
   top: 30px;
   right: 30px;
+}
+
+#inicio{
+  margin-top: -4px;
+  float: left;
+  margin-right: 5px;
+}
+
+#final{
+  margin-top: -14px;
+  margin-left: 8px;
+  float: right;
+}
+
+#numer{
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
+
+#numer span{
+  background-color: rgba(0, 0, 0, 0.8);
 }
