@@ -78,13 +78,14 @@ $(document).ready(function() {
             image = i;
             distorter.setImage(photo[i].src);
             document.getElementById("myInput").value = i;
+            moveDivisor3();
+            document.getElementById("noselect").innerHTML = myCifra;
             i++;
           } else{
             clearInterval(refreshIntervalId);
             console.log("PARANDO");
             $("#play").empty();
             $("#play").append("<i class='fas fa-play'></i>");
-            document.getElementById("myInput").value = 30;
             if(i == 302){
               i = 30;
             }
@@ -331,24 +332,29 @@ $(document).ready(function() {
       }
     }
 
+    var myRange = document.querySelector('#myInput');
+    var myValue = document.querySelector('#myValue');
+    var myUnits = 'myUnits';
+    var off = myRange.offsetWidth / (parseInt(myRange.max) - parseInt(myRange.min));
+    var px =  ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
+    var myCifra;
+    $("#myInput").mousemove(moveDivisor3);
     $('#myInput').focusin(thumbnails);
     $('#myInput').mouseout(function(){
       $('#myDiv').hide();
     });
+    function moveDivisor3() {
+      myCifra = Math.trunc(((myRange.value-30) * 100) / 271);
+      imageValues.style.left =myCifra +"%";
+    }
     function thumbnails(){
-      var myRange = document.querySelector('#myInput');
-      var myValue = document.querySelector('#myValue');
-      var myUnits = 'myUnits';
-      var off = myRange.offsetWidth / (parseInt(myRange.max) - parseInt(myRange.min));
-      var px =  ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
-
         myValue.parentElement.style.left = px + 'px';
         myValue.parentElement.style.top = (myRange.offsetHeight - 170) + 'px';
-        myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='height: 100%; width: 100%; object-fit: contain; position: absolute'></img></div>";//Math.trunc(myRange.value) + ' ' + myUnits;
+        myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='width: 100%; position: absolute'></img></div></div>";//Math.trunc(myRange.value) + ' ' + myUnits;
 
         myRange.oninput =function(){
           px = ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
-          myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='height: 100%; width: 100%; object-fit: contain; position: absolute'></img></div>";
+          myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='width: 100%; object-fit: contain; position: absolute'></img></div>";
           myValue.parentElement.style.left = px + 'px';
         };
     }
@@ -387,7 +393,6 @@ $(document).ready(function() {
     function moveDivisor() {
       handle.style.left = slider.value+"%";
       divisor.style.width = slider.value+"%";
-
     }
 
     /*function point_it(event){
