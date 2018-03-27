@@ -15,7 +15,6 @@ var translatey = 0;
 var timer = 0;
 
 var playClicked = 0;
-var editClicked = 0;
 
 $(document).ready(function() {
 
@@ -42,6 +41,7 @@ $(document).ready(function() {
         image = image + 1;
         i = image;
         distorter.setImage(photo[i].src);
+        document.getElementById("myInput").value = image;
       }else{
         alert("No more BIM");
       }
@@ -55,8 +55,9 @@ $(document).ready(function() {
         image = image - 1;
         i = image;
         distorter.setImage(photo[i].src);
+        document.getElementById("myInput").value = image;
       }else{
-        distorter.setImage(photo[i].src);
+        distorter.setImage("img/bim/0.png");
         alert("No more BIM");
       }
     });
@@ -81,6 +82,9 @@ $(document).ready(function() {
           } else{
             clearInterval(refreshIntervalId);
             console.log("PARANDO");
+            $("#play").empty();
+            $("#play").append("<i class='fas fa-play'></i>");
+            document.getElementById("myInput").value = 30;
             if(i == 302){
               i = 30;
             }
@@ -155,28 +159,16 @@ $(document).ready(function() {
 
     //btn ok & cancel
     $("#ok").click(function(){
-      if(editClicked == 0){
-        document.getElementById("edit2").style.backgroundColor = "rgba(143, 178, 213, 0.65)";
-        editClicked = 1;
-      }else{
-        document.getElementById("edit2").style.backgroundColor = "";
-        editClicked = 0;
-      }
       jQuery('#controls').toggle('show');
       jQuery('#myRow').toggle('show');
+      jQuery('#dots').toggle('show');
     });
 
     $("#cancel").click(function(){
       myReset();
-      if(editClicked == 0){
-        document.getElementById("edit2").style.backgroundColor = "rgba(143, 178, 213, 0.65)";
-        editClicked = 1;
-      }else{
-        document.getElementById("edit2").style.backgroundColor = "";
-        editClicked = 0;
-      }
       jQuery('#controls').toggle('show');
       jQuery('#myRow').toggle('show');
+      jQuery('#dots').toggle('show');
     });
 
     $("#reset").click(function(){
@@ -184,26 +176,13 @@ $(document).ready(function() {
     });
 
     $("#closeEditor").click(function(){
-      if(editClicked == 0){
-        document.getElementById("edit2").style.backgroundColor = "rgba(143, 178, 213, 0.65)";
-        editClicked = 1;
-      }else{
-        document.getElementById("edit2").style.backgroundColor = "";
-        editClicked = 0;
-      }
       jQuery('#controls').toggle('show');
       jQuery('#myRow').toggle('show');
+      jQuery('#dots').toggle('show');
     });
 
-    //hidde editbar (edit2)
-    jQuery('#edit2').click(function(event) {
-      if(editClicked == 0){
-        document.getElementById("edit2").style.backgroundColor = "rgba(143, 178, 213, 0.65)";
-        editClicked = 1;
-      }else{
-        document.getElementById("edit2").style.backgroundColor = "";
-        editClicked = 0;
-      }
+    $("#dots").click(function(){
+      jQuery('#dots').toggle('show');
        jQuery('#myRow').toggle('show');
        jQuery('#controls').toggle('show');
     });
@@ -365,11 +344,11 @@ $(document).ready(function() {
 
         myValue.parentElement.style.left = px + 'px';
         myValue.parentElement.style.top = (myRange.offsetHeight - 170) + 'px';
-        myValue.innerHTML = "<div id='myDiv' style='border:2px solid white'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='height: 100%; width: 100%; object-fit: contain; position: absolute'></img></div>";//Math.trunc(myRange.value) + ' ' + myUnits;
+        myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='height: 100%; width: 100%; object-fit: contain; position: absolute'></img></div>";//Math.trunc(myRange.value) + ' ' + myUnits;
 
         myRange.oninput =function(){
           px = ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
-          myValue.innerHTML = "<div id='myDiv' style='border:2px solid white'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='height: 100%; width: 100%; object-fit: contain; position: absolute'></img></div>";
+          myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='height: 100%; width: 100%; object-fit: contain; position: absolute'></img></div>";
           myValue.parentElement.style.left = px + 'px';
         };
     }

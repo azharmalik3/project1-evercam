@@ -22,38 +22,40 @@ html,body{
   top:20px;
   max-width:340px;
   min-width: 340px;
-  max-height:90%;
   border-radius: 5px;
+  padding-bottom: 10px;
 }
 
 #bar{
-  height: 40px;
   width: 100%;
   background-color: white;
   border-radius: 5px;
   text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #bar strong{
   pointer-events: none;
-  margin-top: 10px;
 }
 
-#bar div{
+#closeEditor{
+  position: absolute;
+  z-index: 999;
   height: 20px;
   width: 20px;
   float: right;
 }
 
-#bar div:hover{
+#closeEditor:hover{
   background-color: rgba(143, 178, 213, 0.55);
 }
 
 #closeEditor{
   border: none;
   background-color: transparent;
-  width: 100%;
-  height: 100%;
+  width: 5px;
+  height: 5px;
 }
 
 #comparison {
@@ -67,6 +69,7 @@ html,body{
 
 #values{
   width: 100%;
+  top: 10px;
 }
 
 canvas {
@@ -331,13 +334,14 @@ canvas {
 
 #buttons{
   width: 100%;
+  bottom: 10px;
 }
 
 #buttons input{
   float: right;
   width: 80px;
   margin: 10px;
-  bottom: 10px;
+
 }
 
 #player {
@@ -368,8 +372,8 @@ canvas {
 
 #myInput {
   -webkit-appearance: none;
-  margin: 18px 0;
-  width: 100%;
+  margin: 18px 15px 15px 15px;
+  width: 90%;
 }
 #myInput:focus {
   outline: none;
@@ -547,6 +551,15 @@ canvas {
 #myDiv {
     width: 200px;
     height: 150px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.0);
     padding: 0px;
+}
+
+#dots{
+  position: absolute;
+  z-index: 999;
+  font-size: 50px;
+  color: white;
+  top: 30px;
+  right: 30px;
 }
