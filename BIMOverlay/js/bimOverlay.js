@@ -347,11 +347,11 @@ $(document).ready(function() {
       var px =  ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
         myValue.parentElement.style.left = (px + 30) + 'px';
         myValue.parentElement.style.top = (myRange.offsetHeight - 170) + 'px';
-        myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='width: 100%; object-fit: contain; width: 100%; position: absolute'></img></div><div id='numer'><span><strong>"+ (Math.trunc(myRange.value) - 30) +"</strong></span></div>";//Math.trunc(myRange.value) + ' ' + myUnits;
+        myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='width: 100%; object-fit: contain; width: 100%; position: absolute'></img></div><div id='numer'><div><strong>"+ (Math.trunc(myRange.value) - 30) +"</strong></div></div>";//Math.trunc(myRange.value) + ' ' + myUnits;
 
         myRange.oninput =function(){
           px = ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
-          myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='width: 100%; object-fit: contain; position: absolute'></img></div><div id='numer'><span><strong>"+ (Math.trunc(myRange.value) - 30) +"</strong></span></div>";
+          myValue.innerHTML = "<div id='myDiv'><img src='img/bim/" + Math.trunc(myRange.value) + ".png' style='width: 100%; object-fit: contain; position: absolute'></img></div><div id='numer'><div><strong>"+ (Math.trunc(myRange.value) - 30) +"</strong></div></div>";
           myValue.parentElement.style.left = (px + 30) + 'px';
         };
     }

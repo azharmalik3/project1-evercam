@@ -585,9 +585,11 @@ canvas {
   width: 100%;
   color: white;
   text-align: center;
-  padding: 5px;
+  padding-right:35%;
+  padding-left: 35%;
 }
 
-#numer span{
+#numer div{
   background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
 }
