@@ -34,6 +34,23 @@ $(document).ready(function() {
       document.getElementById("player").style.left = player + "px";
     });
 
+    document.getElementById('getval').addEventListener('change', readURL, true);
+    function readURL(){
+       var file = document.getElementById("getval").files[0];
+       var reader = new FileReader();
+       reader.onloadend = function(){
+
+         document.getElementById('myFigure')
+          .setAttribute(
+              'src', reader.result
+          );
+       }
+       if(file){
+          reader.readAsDataURL(file);
+        }else{
+        }
+    }
+
     $("#download").click(function nextPhoto(){
       var video = document.getElementById('video');
       var canvas = document.getElementById("canvas");
