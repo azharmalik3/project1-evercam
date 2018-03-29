@@ -34,6 +34,38 @@ $(document).ready(function() {
       document.getElementById("player").style.left = player + "px";
     });
 
+    $("#download").click(function nextPhoto(){
+      var video = document.getElementById('video');
+      var canvas = document.getElementById("canvas");
+
+      var stream = canvas.captureStream(25);
+      var recorder = new MediaRecorder(stream);
+      var capturing = false;
+
+      recorder.addEventListener('dataavailable', finishCapturing);
+
+      startCapturing();
+      recorder.start();
+
+      setTimeout(function() {
+        recorder.stop();
+      }, 272 * 80);
+
+      function startCapturing() {
+        capturing = true;
+        playMedia();
+      }
+
+      function finishCapturing(e) {
+        capturing = false;
+        var videoData = [ e.data ];
+        var blob = new Blob(videoData, { 'type': 'video/webm' });
+        var videoURL = URL.createObjectURL(blob);
+        video.src = videoURL;
+        video.play();
+      }
+    });
+
     $("#next").click(function nextPhoto(){
       $("#play").empty();
       $("#play").append("<i class='fas fa-play'></i>");
@@ -64,6 +96,10 @@ $(document).ready(function() {
     });
 
     $("#play").click(function play(){
+      playMedia();
+    });
+
+    function playMedia(){
       if(playClicked == 0){
         if(image == 301){
           image = 30;
@@ -99,7 +135,7 @@ $(document).ready(function() {
         playClicked = 0;
         para = 1;
       }
-    });
+    }
 
     $("#first").click(function firstBim(){
       $("#play").empty();
