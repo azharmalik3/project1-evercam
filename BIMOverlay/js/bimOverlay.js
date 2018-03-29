@@ -66,17 +66,20 @@ $(document).ready(function() {
 
       setTimeout(function() {
         recorder.stop();
+        jQuery('#video').toggle('show');
       }, 272 * 80);
 
       function startCapturing() {
         capturing = true;
+        image = 30;
+        i = 30;
         playMedia();
       }
 
       function finishCapturing(e) {
         capturing = false;
         var videoData = [ e.data ];
-        var blob = new Blob(videoData, { 'type': 'video/webm' });
+        var blob = new Blob(videoData, { 'type': 'video/mp4' });
         var videoURL = URL.createObjectURL(blob);
         video.src = videoURL;
         video.play();
