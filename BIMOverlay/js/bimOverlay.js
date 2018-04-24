@@ -21,8 +21,8 @@ $(document).ready(function() {
 
     loadImg();
 
-    //$("#myFigure").width($(document).width());
-    //$("#myFigure").height($(document).height());
+    $("#myFigure").width($(document).width());
+    $("#myFigure").height($(document).height());
     getTransform();
 
     var esto = $( "#myFigure" ).width();
@@ -33,7 +33,7 @@ $(document).ready(function() {
     document.getElementById("player").style.left = player + "px";
 
     $(window).on('resize', function() {
-      esto = $( "#myFigure" ).width();
+      esto = $(document).width();
       player = (esto / 2) - (myPlayer / 1.5);
       document.getElementById("player").style.left = player + "px";
     });
@@ -207,14 +207,18 @@ $(document).ready(function() {
       getTransform();
     });
     $("#plus").click(function(){
-      scalex = scalex + 0.1;
-      scaley = scaley + 0.1;
-      getTransform();
+      distorter.lens.scale += 0.01;
+      distorter.run();
+      //scalex = scalex + 0.1;
+      //scaley = scaley + 0.1;
+      //getTransform();
     });
     $("#minus").click(function(){
-      scalex = scalex - 0.1;
-      scaley = scaley - 0.1;
-      getTransform();
+      distorter.lens.scale -= 0.01;
+      distorter.run();
+      //scalex = scalex - 0.1;
+      //scaley = scaley - 0.1;
+      //getTransform();
     });
 
     //btn ok & cancel
