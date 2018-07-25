@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+      <meta content="utf-8" http-equiv="encoding">
+      <title>Image editor basic</title>
+      <link type="text/css" href="css/tui-image-editor.css" rel="stylesheet">
+  		<link type="text/css" rel="stylesheet" href="bower_components/tui-color-picker/dist/tui-color-picker.css" />
+  		<link type="text/css" rel="stylesheet" href="css/fontawesome/css/font-awesome.min.css">
+    </head>
+    <body onload="myfunction()">
+        <div class="body-container">
+            <div class="tui-image-editor-controls">
+                <div class="header">
+                    <a href="../"><img class="logo" src="img/logo1.png"></a>
+                </div>
+                <ul class="menu">
+					<li class="menu-item input-wrapper">
+						<i class="fa fa-upload fa-2x"></i></input>
+						<!--<img src="../img/load.png" height="42" width="42"></img>-->
+						<input type="file" accept="image/*" id="input-image-file">
+					</li>
+					<li class="menu-item" id="btn-download"><i class="fa fa-download fa-2x"></i></input></li>
+                    <li class="menu-item disabled" id="btn-undo"><i class="fa fa-undo fa-2x"></i></input></li>
+                    <li class="menu-item disabled" id="btn-redo"><i class="fa fa-repeat fa-2x"></i></input></li>
+                    <li class="menu-item activatable" id="selection"><i class="fa fa-hand-paper-o fa-2x" aria-hidden="true"></i></li>
+                    <li class="menu-item" id="btn-clear-objects"><i class="fa fa-trash fa-2x"></i></input></li>
+                    <li class="menu-item activatable" id="btn-draw-line-straight"><i class="fa fa-minus fa-2x"></i></input></li>
+                    <li class="menu-item activatable" id="btn-draw-line-free"><img src="img/line.png" with="40" height="40"></img></input></li>
+                    <li class="menu-item activatable" id="btn-draw-rect"><i class="fa fa-square-o fa-2x"></i></li>
+					<li class="menu-item activatable" id="btn-draw-circle"><i class="fa fa-circle-o fa-2x"></i></li>
+                    <li class="menu-item icon-text activatable" data-icon-type="arrow" id="btn-add-icon"><i class="fa fa-long-arrow-right fa-2x"></i></li>
+                    <li class="menu-item activatable" id="btn-text"><i class="fa fa-font fa-2x"></i></li>
+                    <li class="menu-item">
+                        <div class="sub-menu-container menu" id="draw-line-sub-menu">
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <div id="tui-brush-color-picker"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sub-menu-container menu" id="draw-free-sub-menu">
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <div id="tui-line-color-picker"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sub-menu-container" id="draw-shape-sub-menu">
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <div id="tui-shape-color-picker"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sub-menu-container" id="icon-sub-menu">
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <div id="tui-arrow-color-picker"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sub-menu-container" id="text-sub-menu">
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <div id="tui-text-color-picker"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="tui-image-editor" id="miimagen"></div>
+        </br>
+            <a href="#" class="button">Save</a>
+            <a href="#" class="button2">Cancel</a>
+			<ul class="mainmenu">
+				<li><span class="buttons button3">Share</span>
+					<ul class="submenu">
+						<li>
+							<a id="twitter" target="_blank" class="buttons share-btn twitter">
+								<i class="fa fa-twitter"></i>
+							</a>
+						</li>
+						<li>
+							<a target="_blank" id ="whatsapp" class="buttons share-btn whatsapp2">
+								<i class="fa fa-whatsapp"></i>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.facebook.com/sharer.php?u=https://project1-evercam.herokuapp.com/img/build.jpg" target="_blank" class="buttons share-btn facebook">
+								<i class="fa fa-facebook"></i>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.linkedin.com/shareArticle?url=https://project1-evercam.herokuapp.com/img/build.jpg&title=My photo&summary=This is a photo from evercam&source=<SOURCE_URL>" target="_blank" class="buttons share-btn linkedin">
+								<i class="fa fa-linkedin"></i>
+							</a>
+						</li>
+						<li>
+							<a id="mylinkId" target="_blank" class="share-btn email buttons">
+								<i class="fa fa-envelope"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#" id="clipboard" class="share-btn copy buttons">
+								<span>Copy <i class="fa fa-image"></i></span>
+							</a>
+						</li>
+            <li>
+							<a href="#" id="clipboardUrl" class="share-btn copy buttons">
+								<span>Copy <i class="fa fa-link"></i></span>
+							</a>
+						</li>
+					<ul>
+				</li>
+			</ul>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.7/fabric.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+    		<script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
+    		<script src="bower_components/tui-color-picker/dist/tui-color-picker.js"></script>
+        <script type="text/javascript" src="js/tui-image-editor.js"></script>
+        <script src="js/basic.js"></script>
+        <script src="js/share.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+        <script type="text/javascript">
+              var apiKey = 'AIzaSyAsTN1MnELBLN5-cKx3wj_aSMWGLij-_WA';
+              var discoveryDocs = ["https://people.googleapis.com/$discovery/rest?version=v1"];
+              var clientId = '688278127727-ah9fu4uc7963b6ehttt21c05mgpafb9r.apps.googleusercontent.com';
+              var scopes = 'profile';
+              var authorizeButton = document.getElementById('authorize-button');
+              var signoutButton = document.getElementById('signout-button');
+              function handleClientLoad() {
+                gapi.load('client:auth2', initClient);
+              }
+              function initClient() {
+                gapi.client.init({
+                    apiKey: apiKey,
+                    discoveryDocs: discoveryDocs,
+                    clientId: clientId,
+                    scope: scopes
+                }).then(function () {
+                  // Listen for sign-in state changes.
+                  gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+                  // Handle the initial sign-in state.
+                  updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                  authorizeButton.onclick = handleAuthClick;
+                  signoutButton.onclick = handleSignoutClick;
+                });
+              }
+              function updateSigninStatus(isSignedIn) {
+                if (isSignedIn) {
+                  authorizeButton.style.display = 'none';
+                  signoutButton.style.display = 'block';
+                  makeApiCall();
+                } else {
+                  authorizeButton.style.display = 'block';
+                  signoutButton.style.display = 'none';
+                }
+              }
+              function handleAuthClick(event) {
+                gapi.auth2.getAuthInstance().signIn();
+              }
+              function handleSignoutClick(event) {
+                gapi.auth2.getAuthInstance().signOut();
+              }
+              // Load the API and make an API call.  Display the results on the screen.
+              function makeApiCall() {
+                gapi.client.people.people.get({
+                  'resourceName': 'people/me',
+                  'requestMask.includeField': 'person.names'
+                }).then(function(resp) {
+                  var p = document.createElement('p');
+                  var name = resp.result.names[0].givenName;
+                  p.appendChild(document.createTextNode('Hello, '+name+'!'));
+                  document.getElementById('content').appendChild(p);
+                });
+              }
+            </script>
+            <script async defer src="https://apis.google.com/js/api.js"
+              onload="this.onload=function(){};handleClientLoad()"
+              onreadystatechange="if (this.readyState === 'complete') this.onload()">
+            </script>
+
+    </body>
+</html>

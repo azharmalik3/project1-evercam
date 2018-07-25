@@ -1,0 +1,262 @@
+.border {
+    border: 1px solid black;
+}
+.body-container {
+    width: 1000px;
+    margin: 0 auto;
+}
+.tui-image-editor-controls {
+    min-height: 250px;
+	z-index: 1;
+}
+.menu {
+    padding: 0;
+    margin-bottom: 5px;
+    text-align: center;
+    color:#544B61;
+    font-weight: 400;
+    list-style-type: none;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+.logo {
+    margin: 0 auto;
+    width: 300px;
+    vertical-align: middle;
+}
+.header .name {
+    padding: 10px;
+    line-height:50px;
+    font-size: 30px;
+    font-weight: 100;
+    vertical-align: middle;
+}
+.header .menu {
+    display: inline-block;
+}
+.menu-item {
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.new-menu{
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.menu-item a {
+    text-decoration: none;
+}
+.menu-item.no-pointer {
+    cursor: default;
+}
+.menu-item.active,
+.menu-item:hover {
+    background-color:#f3f3f3;
+}
+.menu-item.disabled {
+    cursor: default;
+    color: #BFBEBE;
+}
+.align-left-top {
+    text-align: left;
+    vertical-align: top;
+}
+.range-narrow {
+    width: 80px;
+}
+.sub-menu-container {
+    font-size: 14px;
+    /*margin-bottom: 1em;*/
+    display: none;
+}
+.tui-image-editor {
+    height: 200px;
+	z.index: -1;
+}
+.tui-image-editor-canvas-container {
+    margin: 0 auto;
+    top: 40%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    border: 1px dashed black;
+    overflow: hidden;
+}
+.tui-colorpicker-container {
+    margin: 5px auto 0;
+}
+.tui-colorpicker-palette-toggle-slider {
+    display: none;
+}
+.input-wrapper{
+    position: relative;
+}
+.input-wrapper input{
+    cursor: pointer;
+    position: absolute;
+    font-size: 999px;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.btn-text-style{
+    padding: 5px;
+    margin: 3px 1px;
+    border: 1px dashed #bfbebe;
+    outline: 0;
+    background-color: #eee;
+    cursor: pointer;
+}
+.icon-text{
+    font-size: 20px;
+}
+.select-line-type{
+    outline: 0;
+    vertical-align: middle;
+}
+#tui-color-picker{
+    display: inline-block;
+    vertical-align: middle;
+}
+#tui-text-palette{
+    display: none;
+    position: absolute;
+    padding: 10px;
+    border: 1px solid #bfbebe;
+    background-color: #fff;
+    z-index: 9999;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    float: right;
+    font-family: "arial";
+}
+
+.button2 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    float: right;
+    font-family: "arial";
+}
+
+.buttons {
+	background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "arial";
+}
+
+/* reset our lists to remove bullet points and padding */
+.mainmenu, .submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mainmanu {
+	position:relative;
+	z-index: 15000001;
+}
+
+/* make ALL links (main and submenu) have padding and background color */
+.mainmenu a {
+  text-decoration: none;
+}
+
+.mainmenu li {
+	float: left;
+	display: inline;
+}
+
+/* add hover behaviour */
+.mainmenu a:hover {
+    background-color: #C5C5C5;
+}
+
+
+/* when hovering over a .mainmenu item,
+  display the submenu inside it.
+  we're changing the submenu's max-height from 0 to 200px;
+*/
+
+.mainmenu li:hover .submenu {
+  max-height: 400px;
+  display: inline;
+}
+
+/*
+  we now overwrite the background-color for .submenu links only.
+  CSS reads down the page, so code at the bottom will overwrite the code at the top.
+*/
+
+.submenu a {
+  background-color: #999;
+  width: 20px;
+}
+
+/* hover behaviour for links inside .submenu */
+.submenu a:hover {
+  background-color: #666;
+}
+
+/* this is the initial state of all submenus.
+  we set it to max-height: 0, and hide the overflowed content.
+*/
+.submenu {
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: all 0.5s ease-out;
+  position:absolute;
+}
+
+.label {
+	width: 200px;
+	margin: 5px;
+}
+
+.content {
+	position:relative;
+	height:500px;
+	background-color:white;
+	opacity:0.9;
+	clear: both;
+	z-index:1;
+}
