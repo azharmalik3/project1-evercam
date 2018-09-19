@@ -4815,18 +4815,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function _setCanvasElement(element) {
 	            var selectedElement = void 0;
 	            var canvasElement = void 0;
-
+		    console.log(element);
 	            if (element.jquery) {
-			console.log("Element jquery");
 	                selectedElement = element[0];
 	            } else if (element.nodeType) {
-			console.log("Element nodetype");
 	                selectedElement = element;
 	            } else {
-			console.log("Else part");
 	                selectedElement = document.querySelector(element);
 	            }
-		    console.log(selectedElement.nodeName);
 
 	            if (selectedElement.nodeName.toUpperCase() !== 'CANVAS') {
 	                canvasElement = document.createElement('canvas');
