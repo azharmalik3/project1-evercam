@@ -4826,7 +4826,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			console.log("Else part");
 	                selectedElement = document.querySelector(element);
 	            }
-		    console.log(selectedElement);
+		    console.log(selectedElement.nodeName);
 
 	            if (selectedElement.nodeName.toUpperCase() !== 'CANVAS') {
 	                canvasElement = document.createElement('canvas');
