@@ -227,7 +227,7 @@ var imageEditor = new tui.ImageEditor('.tui-image-editor', {
         rotatingPointOffset: 70
     }
 });
-
+console.log($('#tui-brush-color-picker')[0]);
 // Color picker for free drawing
 var instanceBrush = tui.colorPicker.create({
     //container: document.getElementByClassName("tui-color-picker"),
